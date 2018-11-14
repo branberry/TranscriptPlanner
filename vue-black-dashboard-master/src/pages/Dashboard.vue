@@ -128,7 +128,7 @@
   import TaskList from './Dashboard/TaskList';
   import UserTable from './Dashboard/UserTable';
   import config from '@/config';
-
+  
   export default {
     components: {
       LineChart,
