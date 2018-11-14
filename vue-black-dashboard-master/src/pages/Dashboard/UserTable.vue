@@ -12,6 +12,7 @@
     },
     computed: {
       table(){
+        console.log(this.$t('dashboard.usersTable'))
         return this.$t('dashboard.usersTable');
       }
     }
