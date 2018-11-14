@@ -1,7 +1,10 @@
 import os
 
-from flask import Flask
-from flask_cors import CORS,cross_origin
+from flask import Flask, json,jsonify
+from flask_cors import CORS, cross_origin
+from transcriptPlanner.Course import Course
+from transcriptPlanner.Degree import Degree
+from transcriptPlanner.Transcript import Transcript
 
 def create_app(test_config=None):
     # create and configure the app
@@ -9,7 +12,7 @@ def create_app(test_config=None):
     cors = CORS(app)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'transcriptPlanner.sqlite'),
     )
 
     if test_config is None:
@@ -30,5 +33,11 @@ def create_app(test_config=None):
     @cross_origin()
     def hello():
         return 'Hello, World!'
+
+    # a page that displays the course objects
+    @app.route('/courses')
+    @cross_origin()
+    def courses():
+        pass
 
     return app
