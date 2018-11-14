@@ -1,6 +1,8 @@
 <template>
   <div>
-
+    <div>
+      {{message}}
+    </div>
     <div class="row">
       <div class="col-12">
         <card type="chart">
@@ -128,7 +130,8 @@
   import TaskList from './Dashboard/TaskList';
   import UserTable from './Dashboard/UserTable';
   import config from '@/config';
-  
+  import axios from 'axios';
+
   export default {
     components: {
       LineChart,
@@ -137,7 +140,12 @@
       UserTable
     },
     data() {
+      
+      var message;
+
+
       return {
+        message: message,
         bigLineChart: {
           allData: [
             [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
@@ -255,6 +263,13 @@
       }
     },
     mounted() {
+      axios
+        .get("http://127.0.0.1:5000/hello")
+        .then(response => {
+          this.message = response.data;
+          console.log(this.message);
+          console.log(response);
+          })
       this.i18n = this.$i18n;
       if (this.enableRTL) {
         this.i18n.locale = 'ar';
