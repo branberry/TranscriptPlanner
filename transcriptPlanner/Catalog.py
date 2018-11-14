@@ -7,6 +7,7 @@ class Catalog:
         self.courses = courses
 
     def get_course(self, id):
+        id = str(id)
         for i in range(len(self.courses)):
             if self.courses[i].id == id:
                 return self.courses[i]
@@ -24,3 +25,5 @@ c = Catalog()
 c.load_courses('coursecatalog.csv')
 
 print(c.courses[1].courseNum)
+
+print(c.get_course(105555).name)
