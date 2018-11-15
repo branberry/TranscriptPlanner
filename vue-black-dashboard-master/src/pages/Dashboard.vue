@@ -5,28 +5,22 @@
         <template slot="columns">
           <th class="text-center">#</th>
           <th>Name</th>
-          <th>Job Position</th>
-          <th>Since</th>
-          <th class="text-right">Salary</th>
-          <th class="text-right">Actions</th>
+          <th>Credits</th>
+          <th>Prerequisites</th>
+          <th>Course Number</th>
+          <th>Offered In</th>      
+          <th>Department</th>
+          <th>Description</th> 
         </template>  
         <template slot-scope="{row}">
           <td>{{row.id}}</td>
           <td>{{row.name}}</td>
-          <td>{{row.job}}</td>
-          <td>{{row.since}}</td>
-          <td>{{row.salary}}</td>
-          <td class="td-actions text-right">
-            <base-button type="info" size="sm" icon>
-              <i class="tim-icons icon-single-02"></i>
-            </base-button>
-            <base-button type="success" size="sm" icon>
-              <i class="tim-icons icon-settings"></i>
-            </base-button>
-            <base-button type="danger" size="sm" icon>
-              <i class="tim-icons icon-simple-remove"></i>
-            </base-button>
-          </td>
+          <td>{{row.credits}}</td>
+          <td>{{row.prereqs}}</td>
+          <td>{{row.courseNum}}</td>
+          <td>{{row.offeredIn}}</td>
+          <td>{{row.department}}</td>
+          <td>{{row.description}}</td>
         </template>    
   </base-table>
   </div>
@@ -42,7 +36,7 @@
   import axios from 'axios';
   import { BaseTable } from "@/components";
 
-  let tableInformation;
+  var tableInformation;
 
   export default {
     components: {
@@ -57,29 +51,8 @@
       
       data() {
     return {
-     tableInformation : { columns: ["id", "name", "job", "since", "salary", "actions"],
+     tableInformation : { columns: ["id", "name", "credits", "offeredIn", "description", "department"],
         tableData: [
-          {
-            id: 1,
-            name: "	Andrew Mike",
-            salary: "€ 99,225	",
-            job: "Develop",
-            since: 2013,
-          },
-          {
-            id: 2,
-            name: "	John Doe",
-            salary: "€ 89,241",
-            job: "Design",
-            since: 2012,
-          },
-          {
-            id: 3,
-            name: "Alex Mike",
-            salary: "€ 92,144	",
-            job: "Design",
-            since: 2010
-          }
         ]
       }
     }
@@ -91,7 +64,23 @@
 
     },
     mounted() {
+      axios
+        .get("http://127.0.0.1:5000/catalog")
+        .then( res => {
+          
+         // data = JSON.parse(res.data);
+          return JSON.parse(res.data);
+          //console.log(data);
+        })
+        .then(resp => {
+          return resp.courses;
 
+        })
+        .then(response => {
+          console.log(response);
+        
+            this.tableInformation['tableData'] = response;
+        })
     },
     beforeDestroy() {
 
