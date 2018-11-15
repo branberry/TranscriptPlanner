@@ -115,7 +115,7 @@
       </div> -->
       <div class="col-lg-6 col-md-12">
         <card class="card" :header-classes="{'text-right': isRTL}">
-          <h4 slot="header" class="card-title">{{$t('dashboard.simpleTable')}}</h4>
+          <h4 slot="header" class="card-title">Course Catalog</h4>
           <div class="table-responsive">
             <user-table></user-table>
           </div>
