@@ -36,7 +36,7 @@
   import axios from 'axios';
   import { BaseTable } from "@/components";
 
-  let tableInformation;
+  var tableInformation;
 
   export default {
     components: {
@@ -53,16 +53,6 @@
     return {
      tableInformation : { columns: ["id", "name", "credits", "offeredIn", "description", "department"],
         tableData: [
-          {
-            id: 1,
-            name: "	Themes in American Indian Literature",
-            credits: 4,
-            prereqs: "Prerequisite(s): None",
-            courseNum: "AIS355",
-            offeredIn: null,
-            description: "The course is structured around a number of writers working within a particular theme such as Native Voices ofMinnesota, Voices from the Southwest, Poetics and Politics of Native Writing, Women and Power in Native Literature,Urban-Reservation: Homing, and American Indian film-literature adaptation. Students focus on primary texts, comparingand contrasting theme, voice, aesthetic, or cultural emphasis as it shifts or arises across the group of texts. Course crosslists with English.",
-            department: "AIS"
-          },
         ]
       }
     }
@@ -74,7 +64,23 @@
 
     },
     mounted() {
+      axios
+        .get("http://127.0.0.1:5000/catalog")
+        .then( res => {
+          
+         // data = JSON.parse(res.data);
+          return JSON.parse(res.data);
+          //console.log(data);
+        })
+        .then(resp => {
+          return resp.courses;
 
+        })
+        .then(response => {
+          console.log(response);
+        
+            this.tableInformation['tableData'] = response;
+        })
     },
     beforeDestroy() {
 
