@@ -7,7 +7,9 @@ from Catalog import Catalog
 from Transcript import Transcript
 
 app = Flask(__name__)
+cors = CORS(app)
 api = Api(app)
+
 
 catalog = Catalog()
 catalog.load_courses('coursecatalog.csv')
