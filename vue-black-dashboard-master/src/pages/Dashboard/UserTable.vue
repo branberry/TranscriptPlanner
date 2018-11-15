@@ -20,8 +20,7 @@
     },
     computed: {
       table(){
-        console.log(this.$t('dashboard.usersTable'))
-        console.log(blah)
+
         return this.$t('dashboard.usersTable');
       }
     }   
