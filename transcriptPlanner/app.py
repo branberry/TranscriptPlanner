@@ -23,7 +23,7 @@ class HelloWorld(Resource):
 
 class CatalogResource(Resource):
     """
-        This API resource provides catalog data to the user.
+        This API resource provides catalog data to the user
     """
     def get(self):
         return catalog.to_JSON()
