@@ -15,10 +15,16 @@ catalog = Catalog()
 catalog.load_courses('coursecatalog.csv')
 
 class HelloWorld(Resource):
+    """
+        Test REST Endpoint
+    """
     def get(self):
         return {'hello': 'world'}
 
 class CatalogResource(Resource):
+    """
+        This API resource provides catalog data to the user.
+    """
     def get(self):
         return catalog.to_JSON()
 
