@@ -6,7 +6,7 @@
         <!--         <sidebar-link to="/icons" :name="$t('sidebar.icons')" icon="tim-icons icon-atom"/>
         <sidebar-link to="/maps" :name="$t('sidebar.maps')" icon="tim-icons icon-pin"/>
         -->     
-        <sidebar-link to="/audit" :name="$t('sidebar.audit')" icon="icon-paper"/>   
+        <sidebar-link to="/audit" :name="$t('sidebar.audit')" icon="tim-icons icon-single-copy-04"/>   
         <sidebar-link to="/profile" :name="$t('sidebar.userProfile')" icon="tim-icons icon-single-02"/>
         <!--
           <sidebar-link to="/notifications" :name="$t('sidebar.notifications')" icon="tim-icons icon-bell-55"/>
