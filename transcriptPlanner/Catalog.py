@@ -19,6 +19,13 @@ class Catalog:
             if self.courses[i].id == id:
                 return self.courses[i]
     
+    def get_course_by_name(self, name):
+        """
+            find a course by a given short name
+        """
+        for i in range(len(self.courses)):
+            if self.courses[i].courseNum == name:
+                return self.courses[i]
     def load_courses(self, file):
         """
             From a CSV file, the catalog is filled with the courses

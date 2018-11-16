@@ -1,13 +1,18 @@
 {
-    "computerScience" : [
+    "computerScienceBA" : [
         {
             "name" : "Major Requirements",
-            "courses": ["CSC 160", "CSC 170"],
+            "courses": ["CSC160","CSC170","CSC210","CSC240","CSC320","CSC345","CSC385","CSC450","CSC451"],
             "required": 5
         },
         {
+            "name": "Math Requirements",
+            "courses" : ["MAT171","MAT271"],
+            "required": 1
+        },
+        {
             "name" : "Electives",
-            "courses": ["CSC 395"],
+            "courses": ["PHY 261","CSC395","MIS475","MAT355"],
             "required": 2
         }
     ]
