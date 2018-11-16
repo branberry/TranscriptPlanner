@@ -120,6 +120,7 @@
     "userProfile": "User Profile",
     "tableList": "Table List",
     "typography": "Typography",
+    "audit": "Audit Transcript",
     "rtlSupport": "RTL Support"
   }
 }
