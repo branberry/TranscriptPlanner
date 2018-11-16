@@ -8,6 +8,7 @@
     <!-- -->
     <div class="sidebar-wrapper" id="style-3">
       <div class="logo">
+
         <a href="http://augsburg.edu" class="simple-text logo-mini">
           <div class="logo-img"
                :class="{'logo-img-rtl': $rtl.isRTL}">
