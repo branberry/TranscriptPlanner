@@ -11,7 +11,7 @@ import Maps from "@/pages/Maps.vue";
 import Typography from "@/pages/Typography.vue";
 import TableList from "@/pages/TableList.vue";
 import Audit from '@/pages/Audit.vue';
-import TransReq from '@/pages/TranscriptReq.vue';
+import request from '@/pages/TranscriptReq.vue';
 
 
 const routes = [
@@ -61,9 +61,9 @@ const routes = [
         component: Audit
       },
       {
-        path: "transreq",
-        name: "transreq",
-        component: TransReq
+        path: "request",
+        name: "request",
+        component: request
       }
     ]
   },

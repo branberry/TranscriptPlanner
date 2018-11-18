@@ -7,7 +7,7 @@
         <sidebar-link to="/maps" :name="$t('sidebar.maps')" icon="tim-icons icon-pin"/>
         -->     
         <sidebar-link to="/audit" :name="$t('sidebar.audit')" icon="tim-icons icon-single-copy-04"/>
-        <sidebar-link to="/transreq" :name="$t('sidebar.transreq')" icon="tim-icons icon-single-02"/>
+        <sidebar-link to="/request" :name="$t('sidebar.request')" icon="tim-icons icon-single-02"/>
         <sidebar-link to="/profile" :name="$t('sidebar.userProfile')" icon="tim-icons icon-single-02"/>
 
         <!--

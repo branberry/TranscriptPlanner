@@ -121,7 +121,7 @@
     "tableList": "Table List",
     "typography": "Typography",
     "audit": "Audit Transcript",
-    "transreq": "Transcript Request",
+    "request": "Transcript Request",
     "rtlSupport": "RTL Support"
   }
 }
