@@ -28,6 +28,11 @@ class CatalogResource(Resource):
     def get(self):
         return catalog.to_JSON()
 
+class TranscriptResource(Resource):
+    """
+        This API endpoint handles the transcript being sent to and from the frontend
+    """
+
 api.add_resource(HelloWorld, '/')
 api.add_resource(CatalogResource, '/catalog')
 
