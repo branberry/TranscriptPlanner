@@ -35,6 +35,7 @@ class TranscriptResource(Resource):
 
 api.add_resource(HelloWorld, '/')
 api.add_resource(CatalogResource, '/catalog')
+api.add_resource(TranscriptResource,'/transcript')
 
 if __name__ == '__main__':
     app.run(debug=True)
