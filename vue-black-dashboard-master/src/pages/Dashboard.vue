@@ -67,20 +67,15 @@
       axios
         .get("http://127.0.0.1:5000/catalog")
         .then( res => {
-          
-         // data = JSON.parse(res.data);
+
           return JSON.parse(res.data);
-          //console.log(data);
-        })
-        .then(resp => {
-          return resp.courses;
 
         })
-        .then(response => {
-          console.log(response);
-        
-            this.tableInformation['tableData'] = response;
-        })
+        .then(res => {
+          this.tableInformation['tableData'] = res.courses;
+
+        });
+
     },
     beforeDestroy() {
 
