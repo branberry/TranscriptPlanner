@@ -16,12 +16,23 @@
 </div>
 </template>
 <script>
+    import axios from 'axios';
 
+
+
+    const BASE_URL = "http://localhost:5000"
     const STATUS = {
         INITIAL: 0,
         SAVING: 1,
         SUCCESS: 2,
         FAILED: 3
+    }
+
+    /**
+     * This function handles the uploading of form data to the backend
+     */
+    const upload = formData => {
+        const url = `${BASE_URL}/transcript/upload`;
     }
 
     export default {
@@ -57,7 +68,15 @@
              * Reset the form to its initial state!
              */
             reset() {
-                
+                this.currentStatus = STATUS.INITIAL;
+                this.uploadedFiles = [];
+                this.uploadError = null;
+            },
+
+            save(formData) {
+                this.currentStatus = STATUS.SAVING;
+
+                upload(formD)
             }
         }
     }
