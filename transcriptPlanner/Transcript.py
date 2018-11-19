@@ -22,9 +22,9 @@ class Transcript:
     """
     def sum_credits_in_transcript(self, courses):
         for Course in courses:
-            self.credits_total = self.credits_total + Course.getcredits
-        return sum
-
+            self.credits_total = self.credits_total + Course.credits
+        
+	
     """
         this will take two parameters, namely the (Degrees.json and 
         Transcript in the form of courses[]) 
