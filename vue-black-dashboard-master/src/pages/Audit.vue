@@ -32,7 +32,14 @@
      * This function handles the uploading of form data to the backend
      */
     const upload = formData => {
-        const url = `${BASE_URL}/transcript/upload`;
+        const url = `${BASE_URL}/transcript`;
+
+        return axios.post(url, formData)
+            // retrieve data
+            .then(res => res.data)
+            .then(res => {
+                console.log(res);
+            })
     }
 
     export default {
@@ -73,10 +80,44 @@
                 this.uploadError = null;
             },
 
+            /**
+             * Takes the form data, and sends it to the backend
+             * the status is updated accordingly
+             */
             save(formData) {
                 this.currentStatus = STATUS.SAVING;
 
-                upload(formD)
+                upload(formData)
+                    .then(res => {
+                        this.uploadedFiles = [].concat(res);
+                        this.currentStatus = STATUS.SUCCESS;
+                    })
+                    .catch(err => {
+                        this.uploadError = err.response;
+                        this.currentStatus = STATUS.FAILED;
+                    });
+            },
+
+            filesChange(fieldName, fileList) {
+
+                // handle file changes
+                const formData = new FormData();
+
+                if (!fileList.length) return;
+
+                // append the files to the FormData object
+
+                Array.from(Array(fileList.length).keys())
+                    .map(x => {
+                        formData.append(fieldName, fileList[x], fileList[x].name);
+                    });
+                
+                // save the form data!
+                this.save(formData);
+            },
+
+            mounted() {
+                this.reset();
             }
         }
     }
