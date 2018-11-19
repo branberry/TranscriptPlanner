@@ -6,6 +6,9 @@ from Degree import Degree
 from Catalog import Catalog
 from Transcript import Transcript
 
+import json
+import ast
+
 app = Flask(__name__)
 cors = CORS(app)
 api = Api(app)
@@ -36,7 +39,12 @@ class TranscriptResource(Resource):
     """
     def post(self):
         args = parser.parse_args()
-        return args['transcript']
+        print(args['transcript'])
+
+        data = ast.literal_eval(args['transcript'])
+
+        print(data)
+        return data, 201
 
 api.add_resource(HelloWorld, '/')
 api.add_resource(CatalogResource, '/catalog')

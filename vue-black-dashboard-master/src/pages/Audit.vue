@@ -1,16 +1,19 @@
 <template>
 <div>
 
-    <div>
+    <div id="app">
         <h1>Audit Your Transcript</h1>
 
-        <div>
-            <h4>Upload your transcipt here</h4>
+        <div class="container">
+            <!-- Upload! -->
             <form enctype="multipart/form-data">
-                <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name,$event.target.files); fileCount = $event.target.files.length">
+                <h4>Upload your transcipt here</h4>
+            <label class="text-reader">
+                <input type="file" @change="loadTextFromFile">
+            </label>
             </form>
+            
         </div>
-
     </div>
 
 </div>
@@ -28,6 +31,8 @@
         FAILED: 3
     }
 
+    var auditedTranscript;
+
     /**
      * This function handles the uploading of form data to the backend
      */
@@ -36,91 +41,65 @@
 
         return axios.post(url, formData)
             // retrieve data
-            .then(res => res.data)
+            .then(res => {
+                this.auditedtranscript = res.data
+                console.log(res);
+                })
             .then(res => {
                 console.log(res);
             })
     }
 
+
     export default {
         data() {
             return {
-                uploadedFiles: [],
-                uploadError: null,
-                currentStatus: null,
-                uploadFieldName: 'transcript'
+
             }
         },
 
-        computed: {
-
-            isInitial() {
-                return this.currentStatus = STATUS.INITIAL;
-            },
-
-            isSaving() {
-                return this.currentStatus = STATUS.SAVING;
-            },
-
-            isSuccess() {
-                return this.currentStatus = STATUS.SUCCESS;
-            },
-
-            isFailed() {
-                return this.currentStatus = STATUS.FAILED;
-            }
-        },
         methods: {
-            /**
-             * Reset the form to its initial state!
-             */
-            reset() {
-                this.currentStatus = STATUS.INITIAL;
-                this.uploadedFiles = [];
-                this.uploadError = null;
-            },
+            loadTextFromFile(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
 
-            /**
-             * Takes the form data, and sends it to the backend
-             * the status is updated accordingly
-             */
-            save(formData) {
-                this.currentStatus = STATUS.SAVING;
+                reader.onload = e => this.$emit("load", e.target.result);
+                reader.readAsText(file);
 
-                upload(formData)
-                    .then(res => {
-                        this.uploadedFiles = [].concat(res);
-                        this.currentStatus = STATUS.SUCCESS;
-                    })
-                    .catch(err => {
-                        this.uploadError = err.response;
-                        this.currentStatus = STATUS.FAILED;
-                    });
-            },
-
-            filesChange(fieldName, fileList) {
-
-                // handle file changes
-                const formData = new FormData();
-
-                if (!fileList.length) return;
-
-                // append the files to the FormData object
-
-                Array.from(Array(fileList.length).keys())
-                    .map(x => {
-                        formData.append(fieldName, fileList[x], fileList[x].name);
-                    });
-                
-                // save the form data!
-                this.save(formData);
-            },
-
-            mounted() {
-                this.reset();
+                reader.onload = event => {
+                    upload(JSON.parse(reader.result));
+                }
             }
         }
     }
 </script>
-<style lang="sass">
+<style lang="scss">
+.dropbox {
+    outline: 2px dashed grey; /* the dash box */
+    outline-offset: -10px;
+    background: lightcyan;
+    color: dimgray;
+    padding: 10px 10px;
+    min-height: 200px; /* minimum height */
+    position: relative;
+    cursor: pointer;
+  }
+
+  .input-file {
+    opacity: 0; /* invisible but it's there! */
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .dropbox:hover {
+    background: lightblue; /* when mouse over to the drop zone, change color */
+  }
+
+  .dropbox p {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 50px 0;
+  }
 </style>

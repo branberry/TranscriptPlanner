@@ -52,8 +52,7 @@
       data() {
     return {
      tableInformation : { columns: ["id", "name", "credits", "offeredIn", "description", "department"],
-        tableData: [
-        ]
+        tableData: []
       }
     }
   },
