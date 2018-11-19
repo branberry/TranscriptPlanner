@@ -15,30 +15,11 @@ For the Flask app, you will want to have Python installed, and you will need to 
 
 ```pip install -U flask-cors```
 
-To run the flask app on Windows, type the following commands if you are using PowerShell within the repository:
+```pip install flask-restful```
 
+To run the Flask app, cd into ```transcriptPlanner/transcriptPlanner``` and run ```python app.py``` 
 
-```$env:FLASK_APP = "transcriptPlanner"```
-
-```$env:FLASK_ENV = "development"```
-
-```flask run```
-
-If you are using the Command Prompt, you will want to type the following commands within the repository:
-
-```set FLASK_APP=transcriptPlanner```
-
-```set FLASK_ENV=development```
-
-```flask run```
-
-For Mac/Linux:
-
-```export FLASK_APP=transcriptPlanner```
-
-```export FLASK_ENV=development```
-
-```flask run```
+Documentation on Flask-RESTful can be [found here.](https://flask-restful.readthedocs.io/en/latest/)
 
 ### Vue App (Front-end)
 
@@ -61,3 +42,36 @@ or
 ```sudo yarn run dev```
 
 if on Mac/Linux.
+
+### Helpful resources
+
+For help on VueJS itself, you can [go here.](https://vuejs.org/v2/guide/)  It would also be helpful to know about [Axios](https://medium.com/codingthesmartway-com-blog/getting-started-with-axios-166cb0035237), and check out stuff on REST APIs to get a sense of what is going on.
+
+### Tech Summary
+
+Essentially, the Frontend (the Vue app) communicates to the backend (the Flask app) by sending HTTP Requests.  These requests look like:
+
+```localhost:5000/catalog```
+
+And when you ping this URL, you receive a response that is JSON (*J*ava*S*cript *O*bject *N*otation) formatted.  This is where Axios comes in.
+
+Axios is an HTTP client for node.js, and allows us to make calls to our Flask app.
+
+Here is an example Axios call to our Flask app:
+
+```javascript
+
+      axios
+        .get("http://127.0.0.1:5000/catalog")
+        .then( res => {
+
+          return JSON.parse(res.data);
+
+        })
+        .then(res => {
+          this.tableInformation['tableData'] = res.courses;
+
+        });
+```
+
+The .get() pings our URL, and since the calls are asynchronous, we have to wait for the request to reach out Flask app.  The subsequent .then() calls are used to retrieve the asynchronous data.

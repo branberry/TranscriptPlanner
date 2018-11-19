@@ -3,10 +3,10 @@ import csv
 
 
 class Course:
-    def __init__(self, id, name, credits, prereqs, courseNum,  offeredIn, description, department):
+    def __init__(self, id, name, credit, prereqs, courseNum,  offeredIn, description, department):
         self.id = id
         self.name = name
-        self.credits = credits
+        self.credit = credit
         self.prereqs = prereqs
         self.courseNum = courseNum
         self.offeredIn = offeredIn

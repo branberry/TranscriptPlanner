@@ -11,6 +11,7 @@ import Maps from "@/pages/Maps.vue";
 import Typography from "@/pages/Typography.vue";
 import TableList from "@/pages/TableList.vue";
 import Audit from '@/pages/Audit.vue';
+import request from '@/pages/TranscriptReq.vue';
 
 
 const routes = [
@@ -58,6 +59,11 @@ const routes = [
         path: "audit",
         name: "audit",
         component: Audit
+      },
+      {
+        path: "request",
+        name: "request",
+        component: request
       }
     ]
   },
