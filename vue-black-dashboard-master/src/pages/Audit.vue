@@ -31,30 +31,14 @@
         FAILED: 3
     }
 
-    var auditedTranscript;
 
-    /**
-     * This function handles the uploading of form data to the backend
-     */
-    const upload = formData => {
-        const url = `${BASE_URL}/transcript`;
 
-        return axios.post(url, formData)
-            // retrieve data
-            .then(res => {
-                this.auditedtranscript = res.data
-                console.log(res);
-                })
-            .then(res => {
-                console.log(res);
-            })
-    }
 
 
     export default {
         data() {
             return {
-
+                auditedTranscript: {}
             }
         },
 
@@ -67,8 +51,24 @@
                 reader.readAsText(file);
 
                 reader.onload = event => {
-                    upload(JSON.parse(reader.result));
+                    this.upload(JSON.parse(reader.result));
                 }
+            },
+            /**
+             * This function handles the uploading of form data to the backend
+             */
+                upload(formData) {
+                const url = `${BASE_URL}/transcript`;
+
+                return axios.post(url, formData)
+                    // retrieve data
+                    .then(res => {
+                        this.auditedTranscript = Object.assign({},res.data);
+                        console.log(res);
+                        })
+                    .then(res => {
+                        console.log(res);
+                    })
             }
         }
     }
