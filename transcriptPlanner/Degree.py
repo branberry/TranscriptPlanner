@@ -1,7 +1,5 @@
 class Degree:
-    def __init__(self, courses, requirements):
-        self.courses = courses
-        self.requirements = requirements
+    def __init__(self, major, degree_requirements=[]):
+        self.degree_requirements = degree_requirements
+        self.major = major
 
-    def audit_transcript(self, transcript):
-        pass

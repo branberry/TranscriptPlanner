@@ -10,6 +10,9 @@ import Icons from "@/pages/Icons.vue";
 import Maps from "@/pages/Maps.vue";
 import Typography from "@/pages/Typography.vue";
 import TableList from "@/pages/TableList.vue";
+import Audit from '@/pages/Audit.vue';
+import request from '@/pages/TranscriptReq.vue';
+
 
 const routes = [
   {
@@ -51,6 +54,16 @@ const routes = [
         path: "table-list",
         name: "table-list",
         component: TableList
+      },
+      {
+        path: "audit",
+        name: "audit",
+        component: Audit
+      },
+      {
+        path: "request",
+        name: "request",
+        component: request
       }
     ]
   },
