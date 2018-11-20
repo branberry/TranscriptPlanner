@@ -1,0 +1,6 @@
+var major = [
+	{
+		"name": "American Indians Studies Major"
+		"core" : [ "AIS 105 – Introduction to American Indian Studies", "AIS 205 – Contemporary American Indians" ],
+		"oneOf" : [ "ENL 255 – American Indian Literature", "AIS 264 – American Indians in the Cinema", "HIS 236 – American Indian History", "RLN 370 – American Indian Spirituality and Philosophical Thought" ],
+		"fourOf" : [ "AIS 208 – Native American Women and Film", "AIS 233 – Women: A Cross-Cultural Perspective", "AIS 264 – American Indian in the Cinema", "AIS 299 – Directed Study", "AIS 305 – Indigenous Issues of the Americas", "AIS 320 – American Indian Women", "AIS 332 – Native American Storytelling", "AIS 364 – Indigenous Filmmakers", "AIS 396 – Internship", "AIS 405 – Indigenous Activism and Resistance in the Americas
