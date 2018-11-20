@@ -1,16 +1,19 @@
 <template>
 <div>
 
-    <div>
+    <div id="app">
         <h1>Audit Your Transcript</h1>
 
-        <div>
-            <h4>Upload your transcipt here</h4>
+        <div class="container">
+            <!-- Upload! -->
             <form enctype="multipart/form-data">
-                <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name,$event.target.files); fileCount = $event.target.files.length">
+                <h4>Upload your transcipt here</h4>
+            <label class="text-reader">
+                <input type="file" @change="loadTextFromFile">
+            </label>
             </form>
+            
         </div>
-
     </div>
 
 </div>
@@ -28,58 +31,75 @@
         FAILED: 3
     }
 
-    /**
-     * This function handles the uploading of form data to the backend
-     */
-    const upload = formData => {
-        const url = `${BASE_URL}/transcript/upload`;
-    }
+
+
+
 
     export default {
         data() {
             return {
-                uploadedFiles: [],
-                uploadError: null,
-                currentStatus: null,
-                uploadFieldName: 'transcript'
+                auditedTranscript: {}
             }
         },
 
-        computed: {
-
-            isInitial() {
-                return this.currentStatus = STATUS.INITIAL;
-            },
-
-            isSaving() {
-                return this.currentStatus = STATUS.SAVING;
-            },
-
-            isSuccess() {
-                return this.currentStatus = STATUS.SUCCESS;
-            },
-
-            isFailed() {
-                return this.currentStatus = STATUS.FAILED;
-            }
-        },
         methods: {
-            /**
-             * Reset the form to its initial state!
-             */
-            reset() {
-                this.currentStatus = STATUS.INITIAL;
-                this.uploadedFiles = [];
-                this.uploadError = null;
+            loadTextFromFile(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+
+                reader.onload = e => this.$emit("load", e.target.result);
+                reader.readAsText(file);
+
+                reader.onload = event => {
+                    this.upload(JSON.parse(reader.result));
+                }
             },
+            /**
+             * This function handles the uploading of form data to the backend
+             */
+                upload(formData) {
+                const url = `${BASE_URL}/transcript`;
 
-            save(formData) {
-                this.currentStatus = STATUS.SAVING;
-
-                upload(formD)
+                return axios.post(url, formData)
+                    // retrieve data
+                    .then(res => {
+                        this.auditedTranscript = Object.assign({},res.data);
+                        console.log(res);
+                        })
+                    .then(res => {
+                        console.log(res);
+                    })
             }
         }
     }
 </script>
-<style lang="sass">
+<style lang="scss">
+.dropbox {
+    outline: 2px dashed grey; /* the dash box */
+    outline-offset: -10px;
+    background: lightcyan;
+    color: dimgray;
+    padding: 10px 10px;
+    min-height: 200px; /* minimum height */
+    position: relative;
+    cursor: pointer;
+  }
+
+  .input-file {
+    opacity: 0; /* invisible but it's there! */
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .dropbox:hover {
+    background: lightblue; /* when mouse over to the drop zone, change color */
+  }
+
+  .dropbox p {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 50px 0;
+  }
 </style>
