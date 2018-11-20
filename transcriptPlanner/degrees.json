@@ -3,7 +3,7 @@
         {
             "name" : "Major Requirements",
             "courses": ["CSC160","CSC170","CSC210","CSC240","CSC320","CSC345","CSC385","CSC450","CSC451"],
-            "required": 5
+            "required": 9
         },
         {
             "name": "Math Requirements",

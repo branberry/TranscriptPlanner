@@ -56,7 +56,7 @@ class DegreeCatalog:
 
         with open(file) as json_file:
             data = json_file.read()
-            data = json.loads(data)
+            data = ast.literal_eval(data)
             self.degrees = data
 
     def get_degree(self, degree_name):

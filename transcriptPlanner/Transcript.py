@@ -1,6 +1,7 @@
 from Degree import Degree
 
 import json
+import ast
 
 class Transcript:
     """
@@ -18,16 +19,17 @@ class Transcript:
                 for k in range(len(self.courses)):
                     for j in range(len(degree.degree_requirements[i]['courses'])):
                         if self.courses[k] == degree.degree_requirements[i]['courses'][j]:
-                            print('woot')
+                            print(degree.degree_requirements[i]['courses'][j])
         else:
             print('You are not majoring in ' + degree.major +", you are majoring in " + self.major)
-            
+
     def load_transcript(self, file):
 
         with open(file) as json_file:
             data = json_file.read()
-            data = json.loads(data)
+            data = ast.literal_eval(data)
             self.courses = data['courses']
+            self.major = data['major']
             print(self.courses)
 
 
