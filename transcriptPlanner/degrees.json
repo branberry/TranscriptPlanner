@@ -1,5 +1,5 @@
 {
-    "computerScienceBA" : [
+    "ComputerScienceBA" : [
         {
             "name" : "Major Requirements",
             "courses": ["CSC160","CSC170","CSC210","CSC240","CSC320","CSC345","CSC385","CSC450","CSC451"],
@@ -15,5 +15,9 @@
             "courses": ["PHY 261","CSC395","MIS475","MAT355"],
             "required": 2
         }
+    ],
+
+    "Physics": [
+
     ]
 }

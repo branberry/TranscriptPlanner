@@ -3,7 +3,7 @@ from flask_cors import CORS, cross_origin
 from flask_restful import Resource, Api, reqparse
 from Course import Course
 from Degree import Degree
-from Catalog import Catalog
+from Catalog import CourseCatalog, DegreeCatalog
 from Transcript import Transcript
 
 import json
@@ -16,7 +16,7 @@ api = Api(app)
 parser = reqparse.RequestParser()
 parser.add_argument('transcript')
 
-catalog = Catalog()
+catalog = CourseCatalog()
 catalog.load_courses('coursecatalog.csv')
 
 class HelloWorld(Resource):
