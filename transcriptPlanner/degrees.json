@@ -17,8 +17,40 @@
         }
     ],
 
-    "Physics": [
+    "PhysicsBA": [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["PHY121", "PHY122", "PHY245", "PHY351", "PHY362", "PHY363", "PHY395", "PHY396"],
+          "required" : 8
+      }
+      {
+          "name" : "Math Requirements",
+          "courses" : ["MAT145", "MAT146", "MAT245"],
+          "required" : 2
+      }
+      {
+          "name" : "PHY327 or MAT369",
+          "courses" : ["PHY327", "MAT369"],
+          "required" : 1
+      }
+    ],
 
+    "PhysicsBS": [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["PHY121", "PHY122", "PHY245", "PHY351", "PHY362", "PHY363", "PHY395", "PHY396"],
+          "required" : 8
+      }
+      {
+          "name" : "Electives",
+          "courses" : ["PHY317", "PHY320", "PHY352", "PHY420", "PHY430", "PHY486", "CHM115-L", "CHM116-L", "MAT145", "MAT146", "MAT245"],
+          "required" : 2
+      }
+      {
+          "name" : "PHY327 or MAT369",
+          "courses" : ["PHY327", "MAT369"],
+          "required" : 1
+      }
     ],
 
     "American Indians Studies Major" : [
@@ -65,7 +97,46 @@
     "Graphic Design Major" : [
       {
           "name" : "Major Requirements",
-          "courses" : ["ART124", "ART125"]
+          "courses" : ["ART124", "ART125", "ART126", "ART127", "ART226", "ART133", "ART201", "ART202", "ART240", "ART315", "ART324", "ART326", "ART424", "ART425"],
+          "required" : 14
+      }
+      {
+          "name" : "Drawing Courses",
+          "courses" : ["ART107", "ART122"],
+          "required" : 1
+      }
+      {
+          "name" : "Three Dimension Art Courses",
+          "courses" : ["ART221", "ART250", "ART280"],
+          "required" : 1
+      }
+      {
+          "name" : "Art History Requirements",
+          "courses" : ["ART349", "ART352", "ART382", "ART385", "ART386", "ART387", "ART388", "ART389", "ART390", "ART305", "ART405"],
+          "required" : 2
+      }
+    ],
+
+    "BiologyBA" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["BIO151", "BIO152", "BIO253", "BIO255"],
+          "required" : 4
+      }
+      {
+          "name" : "Math or Statistics Requirement",
+          "courses" : ["MAT114", "MAT145", "MAT163", "MAT164", "PSY215", "CHM115-L", "CHM116-L", "PHY116", "PHY107", "PHY108", "PHY121", "PHY122"],
+          "required" : 1
+      }
+      {
+          "name" : "Keystone",
+          "courses" : ["BIO490", "SCI490", "HON490"],
+          "required" : 1
+      }
+      {
+          "name" : "Electives",
+          "courses" : ["BIO351", "BIO353", "BIO361", "BIO369", "BIO440", "BIO471", "BIO473", "BIO474", "BIO475", "BIO476", "BIO481", "BIO485", "BIO486", "BIO495", "PHY317"],
+          "required" : 5
       }
     ]
 }
