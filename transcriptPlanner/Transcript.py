@@ -14,14 +14,26 @@ class Transcript:
         self.major = major
     
     def audit_transcript(self,degree):
+        response = []
         if degree.major == self.major:
             for i in range(len(degree.degree_requirements)):
-                for k in range(len(self.courses)):
-                    for j in range(len(degree.degree_requirements[i]['courses'])):
-                        if self.courses[k] == degree.degree_requirements[i]['courses'][j]:
-                            print(degree.degree_requirements[i]['courses'][j])
+                response.append({})
+                response[i]['completed'] = 0
+                response[i]['diff'] = []
+                print(response)
+                for j in range(len(degree.degree_requirements[i]['courses'])):
+                    if degree.degree_requirements[i]['courses'][j] in self.courses:
+                        print(self.courses[j])
+                        response[i]['completed'] += 1
+                    else:
+                        response[i]['diff'].append(degree.degree_requirements[i]['courses'][j])
+
+                response[i]['requirement_met'] = (response[i]['completed'] >= degree.degree_requirements[i]['required'])
+                                                   
         else:
             print('You are not majoring in ' + degree.major +", you are majoring in " + self.major)
+        print(response)
+        return response
 
     def load_transcript(self, file):
 
