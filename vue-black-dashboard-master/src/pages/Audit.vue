@@ -25,19 +25,32 @@
                 <th>Requirement</th>
             </template>  
             <template slot-scope="{row}">
-
+                <td>{{row.name}}</td>
                 <td>
-                    <base-table :data="row.all_courses">
+                    <base-table :data="row.complete">
                         <template slot="columns" >
-                            <th>Courses</th>
+                            <th>Completed Courses</th>
                         </template>
-                        <template slot-scope="{innerRow}">
+                        <template slot-scope="{row}">
                             
-                            <td>{{innerRow}}</td>
+                            <td>{{row}}</td>
                         </template>
                     </base-table>
                 </td>
-                                <td>{{row.name}}</td>
+                <td v-if="!row.requirement_met">
+                    <base-table :data="row.incomplete">
+                        <template slot="columns" >
+                            <th>Incomplete Courses</th>
+                        </template>
+                        <template slot-scope="{row}">
+                            
+                            <td>{{row}}</td>
+                        </template>
+                    </base-table>
+                </td>
+
+                <td v-else>Requirement Satisified</td>
+     
             </template>    
             </base-table>
         </div>
