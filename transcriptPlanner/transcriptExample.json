@@ -1,0 +1,16 @@
+{   
+    "transcript": {
+            "major": "ComputerScienceBA",
+            "courses": [
+            "AIS355",
+            "SWK631",
+            "CSC160",
+            "CSC170",
+            "CSC210",
+            "CSC240",
+            "CSC320",
+            "CSC345",
+            "MAT171"
+        ]
+    }
+}

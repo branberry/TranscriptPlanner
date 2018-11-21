@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import csv
 import json
 from Course import Course
 
+=======
+from Degree import Degree
+
+import json
+import ast
+>>>>>>> master
 
 class Transcript:
     """
@@ -10,32 +17,53 @@ class Transcript:
         with respect to a given degree.
         Will contain list of courses as well as total credits
     """
-    def __init__(self, courses=[]):
+      def __init__(self,major, courses=[]):
         self.courses = courses
-        self.credits_total = 0;
-		self.Difference =
-    """
-        will take the courses[] built from Transcript.json 
-        file and sum up the credits
-        :returns integer sum total of the credits
-         associated with each courses in the list
-    """
-    def sum_credits_in_transcript(self, courses):
-        for Course in courses:
-            self.credits_total = self.credits_total + Course.credit
-        
-	
-    """
-        this will take two parameters, namely the (Degrees.json and 
-        Transcript in the form of courses[]) 
-        it'll build a list of courses that are the 
-        difference between the transcript and requirement
-    """
-    """def auditor(self):(self, courses, Degrees):"""
-			possibly return
-			return difference (between transcript and degree[course ID,...]
-			
+        self.major = major
+    
+    def audit_transcript(self,degree):
+        """
+            This method takes in a degree, and compares it with the transcript's 
+            completed courses
+        """
+
+        # contains a list of degree requirement objects
+        response = []
+
+        for i in range(len(degree.degree_requirements)):
+
+            # adding an empty dictionary to the response list.
+            response.append({})
+            
+            # completed property contains the number of instances where the transcript has a degree requirement course
+            response[i]['completed'] = 0
+            
+            # this list contains all the original courses for the requirement.  This will be used 
+            response[i]['all_courses'] = degree.degree_requirements[i]['courses']
+            response[i]['incomplete'] = []
+    
+            for j in range(len(degree.degree_requirements[i]['courses'])):
+                if degree.degree_requirements[i]['courses'][j] in self.courses:
+                    response[i]['completed'] += 1
+                else:
+                    response[i]['incomplete'].append(degree.degree_requirements[i]['courses'][j])
+
+            # if the count for the requirement met is greater than or equal to what the degree requires, then we have satisfied the requirement
+            response[i]['requirement_met'] = (response[i]['completed'] >= degree.degree_requirements[i]['required'])
+
+        print(response)
+        return response
+
+    def load_transcript(self, file):
+
+        with open(file) as json_file:
+            data = json_file.read()
+            data = ast.literal_eval(data)
+            self.courses = data['courses']
+            self.major = data['major']
+            print(self.courses)
 
 
+t = Transcript('Computer Science')
 
-
+d = Degree('Computer Science')

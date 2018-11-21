@@ -1,9 +1,9 @@
 {
-    "computerScienceBA" : [
+    "ComputerScienceBA" : [
         {
             "name" : "Major Requirements",
             "courses": ["CSC160","CSC170","CSC210","CSC240","CSC320","CSC345","CSC385","CSC450","CSC451"],
-            "required": 5
+            "required": 9
         },
         {
             "name": "Math Requirements",
@@ -15,5 +15,276 @@
             "courses": ["PHY 261","CSC395","MIS475","MAT355"],
             "required": 2
         }
-    ]
+    ],
+
+    "PhysicsBA": [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["PHY121", "PHY122", "PHY245", "PHY351", "PHY362", "PHY363", "PHY395", "PHY396"],
+          "required" : 8
+      },
+      {
+          "name" : "Math Requirements",
+          "courses" : ["MAT145", "MAT146", "MAT245"],
+          "required" : 2
+      },
+      {
+          "name" : "PHY327 or MAT369",
+          "courses" : ["PHY327", "MAT369"],
+          "required" : 1
+      }
+    ],
+
+    "PhysicsBS": [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["PHY121", "PHY122", "PHY245", "PHY351", "PHY362", "PHY363", "PHY395", "PHY396"],
+          "required" : 8
+      },
+      {
+          "name" : "Electives",
+          "courses" : ["PHY317", "PHY320", "PHY352", "PHY420", "PHY430", "PHY486", "CHM115-L", "CHM116-L", "MAT145", "MAT146", "MAT245"],
+          "required" : 2
+      },
+      {
+          "name" : "PHY327 or MAT369",
+          "courses" : ["PHY327", "MAT369"],
+          "required" : 1
+      }
+    ],
+
+    "American Indians Studies Major" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["AIS105", "AIS205"],
+          "required" : 2
+      },
+      {
+          "name" : "ENL or AIS Requirements",
+          "courses" : ["ENL255", "AIS264", "HIS236", "RLN370"],
+          "required" : 1
+      },
+      {
+          "name" : "Electives",
+          "courses" : ["AIS208", "AIS233", "AIS264", "AIS299", "AIS305", "AIS320", "AIS332", "AIS364", "AIS396", "AIS399", "AIS405", "AIS408", "AIS490", "AIS495", "AIS 498", "AIS499", "ART290", "DAK111", "DAK112", "ENL255", "ENL355", "OJB111", "OJB112"],
+          "required" : 4
+      }
+    ],
+
+    "Studio Art Major" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["ART102", "ART107"],
+          "required" : 2
+      },
+      {
+          "name" : "Two Dimension Art Courses",
+          "courses" : ["ART118", "ART201", "ART223", "ART257"],
+          "required" : 1
+      },
+      {
+          "name" : "Three Dimension Art Courses",
+          "courses" : ["ART221", "ART250", "ART280"],
+          "required" : 1
+      },
+      {
+          "name" : "Electives",
+          "courses" : ["ART240", "ART349", "ART352", "ART382", "ART385", "ART386", "ART387", "ART388", "ART389", "ART390", "ART305", "ART405"],
+          "required" : 7
+      }
+    ],
+
+    "Graphic Design Major" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["ART124", "ART125", "ART126", "ART127", "ART226", "ART133", "ART201", "ART202", "ART240", "ART315", "ART324", "ART326", "ART424", "ART425"],
+          "required" : 14
+      },
+      {
+          "name" : "Drawing Courses",
+          "courses" : ["ART107", "ART122"],
+          "required" : 1
+      },
+      {
+          "name" : "Three Dimension Art Courses",
+          "courses" : ["ART221", "ART250", "ART280"],
+          "required" : 1
+      },
+      {
+          "name" : "Art History Requirements",
+          "courses" : ["ART349", "ART352", "ART382", "ART385", "ART386", "ART387", "ART388", "ART389", "ART390", "ART305", "ART405"],
+          "required" : 2
+      }
+    ],
+
+    "BiologyBA" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["BIO151", "BIO152", "BIO253", "BIO255"],
+          "required" : 4
+      },
+      {
+          "name" : "Math or Statistics Requirement",
+          "courses" : ["MAT114", "MAT145", "MAT163", "MAT164", "PSY215", "CHM115-L", "CHM116-L", "PHY116", "PHY107", "PHY108", "PHY121", "PHY122"],
+          "required" : 1
+      },
+      {
+          "name" : "Keystone",
+          "courses" : ["BIO490", "SCI490", "HON490"],
+          "required" : 1
+      },
+      {
+          "name" : "Electives",
+          "courses" : ["BIO351", "BIO353", "BIO361", "BIO369", "BIO440", "BIO471", "BIO473", "BIO474", "BIO475", "BIO476", "BIO481", "BIO485", "BIO486", "BIO495", "PHY317"],
+          "required" : 5
+      }
+    ],
+
+    "BiologyBS" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["BIO151", "BIO152", "BIO253", "BIO255", "CHM115-L", "CHM116-L", "CHM251", "CHM252"],
+          "required" : 8
+      },
+      {
+          "name" : "Physics Sequence",
+          "courses" : ["PHY121", "PHY122", "PHY107", "PHY108", "MAT145", "MAT146"],
+          "required" : 1
+      },
+      {
+          "name" : "Keystone",
+          "courses" : ["BIO490", "SCI490", "HON490"],
+          "required" : 1
+      },
+      {
+          "name" : "Electives",
+          "courses" : ["BIO351", "BIO353", "BIO361", "BIO369", "BIO440", "BIO471", "BIO473", "BIO474", "BIO475", "BIO476", "BIO481", "BIO485", "BIO486", "BIO495", "PHY317"],
+          "required" : 5
+      }
+    ],
+
+    "Life Science BA" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["BIO151", "BIO152", "BIO253", "BIO255"],
+          "required" : 4
+      },
+      {
+          "name" : "Math or Statistics Requirement",
+          "courses" : ["MAT114", "MAT145", "MAT163", "MAT164", "PSY215", "CHM115-L", "CHM116-L", "PHY116", "PHY107", "PHY108", "PHY121", "PHY122"],
+          "required" : 1
+      },
+      {
+          "name" : "Keystone",
+          "courses" : ["BIO490", "SCI490", "HON490"],
+          "required" : 1
+      },
+      {
+          "name" : "Science Courses",
+          "courses" : ["PHY101", "SCI106"],
+          "required" : 2
+      },
+      {
+        "name" : "Electives",
+        "courses" : ["BIO351", "BIO353", "BIO361", "BIO369", "BIO440", "BIO471", "BIO473", "BIO474", "BIO475", "BIO476", "BIO481", "BIO485", "BIO486", "BIO495", "PHY317"],
+        "required" : 4
+      }
+  ],
+
+  "Accounting Major" : [
+    {
+        "name" : "Major Requirements",
+        "courses" : ["ACC322", "ACC323", "ACC324", "ACC326", "ACC423", "ACC425"],
+        "required" : 6
+    },
+    {
+        "name" : "Take MIS379",
+        "courses" : ["MIS379"],
+        "required" : 1
+    }
+  ],
+
+  "Finance Major" : [
+    {
+        "name" : "Major Requirements",
+        "courses" : ["ACC322", "ECO315", "FIN433", "FIN438", "FIN460"],
+        "required" : 5
+    },
+    {
+        "name" : "Take MIS379",
+        "courses" : ["MIS379"],
+        "required" : 1
+    }
+  ],
+
+  "Manangement Information System Major" : [
+    {
+        "name" : "Major Requirements",
+        "courses" : ["MIS270", "MIS375", "MIS376", "MIS475", "MIS476", "CSC160"],
+        "required" : 6
+    },
+    {
+        "name" : "Math Requirement",
+        "courses" : ["MAT171"],
+        "required" : 1
+    },
+    {
+        "name" : "Computer Science Requiremnt",
+        "courses" : ["CSC170", "CSC240"],
+        "required" : 1
+    }
+  ],
+
+  "Marketing Major" : [
+    {
+        "name" : "Major Requirements",
+        "courses": ["ACC221", "ACC222", "BUS242", "BUS301", "BUS362", "ECO112", "ECO113", "FIN331", "MIS260", "MIS264", "MIS379", "MKT252", "MKT252", "MKT352", "MKT450", "MKT466"],
+        "required": 16
+    },
+    {
+        "name" : "MKT350 or MKT354",
+        "courses": ["MKT350", "MKT354"],
+        "required" : 1
+    },
+    {
+        "name" : "MKT355 or MKT357",
+        "courses" : ["MKT355", "MKT557"],
+        "required" : 1
+    },
+    {
+        "name": "Math Requiremnt",
+        "courses" : ["MAT110", "MAT111", "MAT145", "MAT146", "MAT171", "MAT173", "MAT273"],
+        "required" : 1
+    }
+  ],
+
+  "ChemistryBS" : [
+    {
+        "name" : "Major Requiremnt",
+        "courses" : ["CHM115-L", "CHM116-L", "CHM251-L", "CHM252-L", "CHM280-L", "SCI490"],
+        "required" : 6
+    },
+    {
+        "name" : "CHM362 or CHM368",
+        "courses" : ["CHM362", "CHM368"],
+        "required" : 1
+    },
+    {
+        "name" : "Two Courses Only",
+        "courses" : ["CHM430", "CHM440", "CHM450"],
+        "required" : 2
+    },
+    {
+        "name" : "Electives",
+        "courses" : ["CHM362", "CHM368", "CHM464", "CHM481", "CHM482", "CHM494", "CHM495", "CHM498", "PHY317"],
+        "required" : 3
+    },
+    {
+        "name" : "Math Requirement",
+        "courses" : ["MAT145", "MAT146", "PHY121", "PHY122"],
+        "required" : 4
+    }
+  ]
+
+
 }
