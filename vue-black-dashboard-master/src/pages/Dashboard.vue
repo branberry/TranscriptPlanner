@@ -72,7 +72,7 @@
         })
         .then(res => {
           this.tableInformation['tableData'] = res.courses;
-
+          console.log(res.courses);
         });
 
     },

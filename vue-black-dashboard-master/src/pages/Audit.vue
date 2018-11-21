@@ -14,13 +14,37 @@
             </form>
             
         </div>
+        <br><br><br>
+        <div>
+            <h1>Audit Results</h1>
+
+            <h4>Major: {{this.transcript.major}}</h4> 
+            <br><br>
+            <base-table :data="auditedTranscript">
+            <template slot="columns">
+                <th>Requirement</th>
+            </template>  
+            <template slot-scope="{row}">
+                <tr>
+                    <base-table :data="row.all_courses">
+                        <template slot="columns" >
+                            <th>Courses</th>
+                        </template>
+                        <template slot-scope="{innerRow}">
+                            <tr></tr>
+                        </template>
+                    </base-table>
+                </tr>
+            </template>    
+            </base-table>
+        </div>
     </div>
 
 </div>
 </template>
 <script>
     import axios from 'axios';
-
+      import { BaseTable } from "@/components";
 
 
     const BASE_URL = "http://localhost:5000"
@@ -36,9 +60,18 @@
 
 
     export default {
+
+        components: {
+            BaseTable
+        },
+
         data() {
             return {
-                auditedTranscript: {}
+                transcript:{},
+                auditedTranscript: [],
+                auditInformation: {
+                    columns: ["requirement"]
+                }
             }
         },
 
@@ -51,6 +84,7 @@
                 reader.readAsText(file);
 
                 reader.onload = event => {
+                    this.transcript = JSON.parse(reader.result).transcript;
                     this.upload(JSON.parse(reader.result));
                 }
             },
@@ -59,15 +93,16 @@
              */
                 upload(formData) {
                 const url = `${BASE_URL}/transcript`;
-
                 return axios.post(url, formData)
                     // retrieve data
                     .then(res => {
-                        this.auditedTranscript = Object.assign({},res.data);
-                        console.log(res);
+                        return res.data;
                         })
                     .then(res => {
-                        console.log(res);
+
+                        this.auditedTranscript = res;
+
+                        console.log(this.auditedTranscript);
                     })
             }
         }
