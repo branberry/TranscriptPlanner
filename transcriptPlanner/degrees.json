@@ -233,6 +233,57 @@
         "courses" : ["CSC170", "CSC240"],
         "required" : 1
     }
+  ],
+
+  "Marketing Major" : [
+    {
+        "name" : "Major Requirements",
+        "courses": ["ACC221", "ACC222", "BUS242", "BUS301", "BUS362", "ECO112", "ECO113", "FIN331", "MIS260", "MIS264", "MIS379", "MKT252", "MKT252", "MKT352", "MKT450", "MKT466"],
+        "required": 16
+    },
+    {
+        "name" : "MKT350 or MKT354",
+        "courses": ["MKT350", "MKT354"],
+        "required" : 1
+    },
+    {
+        "name" : "MKT355 or MKT357",
+        "courses" : ["MKT355", "MKT557"],
+        "required" : 1
+    },
+    {
+        "name": "Math Requiremnt",
+        "courses" : ["MAT110", "MAT111", "MAT145", "MAT146", "MAT171", "MAT173", "MAT273"],
+        "required" : 1
+    }
+  ],
+
+  "ChemistryBS" : [
+    {
+        "name" : "Major Requiremnt",
+        "courses" : ["CHM115-L", "CHM116-L", "CHM251-L", "CHM252-L", "CHM280-L", "SCI490"],
+        "required" : 6
+    },
+    {
+        "name" : "CHM362 or CHM368",
+        "courses" : ["CHM362", "CHM368"],
+        "required" : 1
+    },
+    {
+        "name" : "Two Courses Only",
+        "courses" : ["CHM430", "CHM440", "CHM450"],
+        "required" : 2
+    },
+    {
+        "name" : "Electives",
+        "courses" : ["CHM362", "CHM368", "CHM464", "CHM481", "CHM482", "CHM494", "CHM495", "CHM498", "PHY317"],
+        "required" : 3
+    },
+    {
+        "name" : "Math Requirement",
+        "courses" : ["MAT145", "MAT146", "PHY121", "PHY122"],
+        "required" : 4
+    }
   ]
 
 
