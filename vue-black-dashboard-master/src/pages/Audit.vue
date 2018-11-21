@@ -48,7 +48,7 @@
                         </template>
                     </base-table>
                 </td>
-
+                <td v-if="!row.requirement_met">{{row.remaining}} Remaining</td>
                 <td v-else>Requirement Satisified</td>
      
             </template>    
