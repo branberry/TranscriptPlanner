@@ -1,23 +1,15 @@
-<<<<<<< HEAD
-import csv
-import json
-from Course import Course
-
-=======
 from Degree import Degree
 
 import json
 import ast
->>>>>>> master
 
 class Transcript:
     """
         This class will take a catalog of courses, and read them into an array.
         This course will use an Auditor object to handle the auditing of the transcript's courses
         with respect to a given degree.
-        Will contain list of courses as well as total credits
     """
-      def __init__(self,major, courses=[]):
+    def __init__(self,major, courses=[]):
         self.courses = courses
         self.major = major
     
