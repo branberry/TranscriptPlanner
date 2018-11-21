@@ -25,16 +25,19 @@
                 <th>Requirement</th>
             </template>  
             <template slot-scope="{row}">
-                <tr>
+
+                <td>
                     <base-table :data="row.all_courses">
                         <template slot="columns" >
                             <th>Courses</th>
                         </template>
                         <template slot-scope="{innerRow}">
-                            <tr></tr>
+                            
+                            <td>{{innerRow}}</td>
                         </template>
                     </base-table>
-                </tr>
+                </td>
+                                <td>{{row.name}}</td>
             </template>    
             </base-table>
         </div>
@@ -76,8 +79,15 @@
         },
 
         methods: {
+
+            /**
+             * This method is used by the fileChooser to handle when a user submits a transcript!
+             * @param event the event that occurs when a file is choosen
+             */
             loadTextFromFile(event) {
                 const file = event.target.files[0];
+
+
                 const reader = new FileReader();
 
                 reader.onload = e => this.$emit("load", e.target.result);
