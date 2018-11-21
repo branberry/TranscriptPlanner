@@ -58,7 +58,6 @@ class DegreeCatalog:
             data = json_file.read()
             data = ast.literal_eval(data)
             
-            
             for d in data:
                 degree = Degree(d,data[d])
                 print(data[d])
