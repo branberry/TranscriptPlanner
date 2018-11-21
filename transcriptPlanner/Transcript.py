@@ -14,24 +14,35 @@ class Transcript:
         self.major = major
     
     def audit_transcript(self,degree):
-        response = []
-        if degree.major == self.major:
-            for i in range(len(degree.degree_requirements)):
-                response.append({})
-                response[i]['completed'] = 0
-                response[i]['diff'] = []
-                print(response)
-                for j in range(len(degree.degree_requirements[i]['courses'])):
-                    if degree.degree_requirements[i]['courses'][j] in self.courses:
-                        print(self.courses[j])
-                        response[i]['completed'] += 1
-                    else:
-                        response[i]['diff'].append(degree.degree_requirements[i]['courses'][j])
+        """
+            This method takes in a degree, and compares it with the transcript's 
+            completed courses
+        """
 
-                response[i]['requirement_met'] = (response[i]['completed'] >= degree.degree_requirements[i]['required'])
-                                                   
-        else:
-            print('You are not majoring in ' + degree.major +", you are majoring in " + self.major)
+        # contains a list of degree requirement objects
+        response = []
+
+        for i in range(len(degree.degree_requirements)):
+
+            # adding an empty dictionary to the response list.
+            response.append({})
+            
+            # completed property contains the number of instances where the transcript has a degree requirement course
+            response[i]['completed'] = 0
+            
+            # this list contains all the original courses for the requirement.  This will be used 
+            response[i]['all_courses'] = degree.degree_requirements[i]['courses']
+            response[i]['diff'] = []
+    
+            for j in range(len(degree.degree_requirements[i]['courses'])):
+                if degree.degree_requirements[i]['courses'][j] in self.courses:
+                    response[i]['completed'] += 1
+                else:
+                    response[i]['diff'].append(degree.degree_requirements[i]['courses'][j])
+
+            # if the count for the requirement met is greater than or equal to what the degree requires, then we have satisfied the requirement
+            response[i]['requirement_met'] = (response[i]['completed'] >= degree.degree_requirements[i]['required'])
+
         print(response)
         return response
 
