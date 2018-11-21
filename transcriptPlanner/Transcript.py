@@ -17,10 +17,9 @@ class Transcript:
     
     def audit_transcript(self,degree):
         """
-            This method takes in a degree, and compares it with the transcript's 
-            completed courses
+            This method takes in a degree(list if req courses), 
+			and compares it with the transcript (loist of completed courses)
         """
-
         # contains a list of degree requirement objects
         response = []
 
