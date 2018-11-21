@@ -57,21 +57,14 @@ class DegreeCatalog:
         with open(file) as json_file:
             data = json_file.read()
             data = ast.literal_eval(data)
-            self.degrees = data
+            
+            
+            for d in data:
+                degree = Degree(d,data[d])
+                print(data[d])
+                self.degrees.append(degree)
 
     def get_degree(self, degree_name):
-        return self.degrees[degree_name]
+        index = next((index for (index, d) in enumerate(self.degrees) if d.major == degree_name), None)
+        return self.degrees[index]
 
-
-dg = DegreeCatalog()
-
-dg.load_degrees('degrees.json')
-
-degree = Degree('ComputerScienceBA', dg.get_degree('ComputerScienceBA'))
-#print(dg.get_degree(degree.major))
-
-t = Transcript('ComputerScienceBA')
-
-t.load_transcript('transcriptExample.json')
-
-t.audit_transcript(degree)

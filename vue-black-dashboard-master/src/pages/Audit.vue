@@ -58,7 +58,7 @@
              */
                 upload(formData) {
                 const url = `${BASE_URL}/transcript`;
-
+                console.log(formData)
                 return axios.post(url, formData)
                     // retrieve data
                     .then(res => {

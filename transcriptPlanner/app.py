@@ -16,8 +16,15 @@ api = Api(app)
 parser = reqparse.RequestParser()
 parser.add_argument('transcript')
 
-catalog = CourseCatalog()
-catalog.load_courses('coursecatalog.csv')
+course_catalog = CourseCatalog()
+course_catalog.load_courses('coursecatalog.csv')
+
+
+degree_catalog = DegreeCatalog()
+degree_catalog.load_degrees('degrees.json')
+
+
+test_degree = degree_catalog.get_degree('ComputerScienceBA')
 
 class HelloWorld(Resource):
     """
@@ -31,7 +38,7 @@ class CatalogResource(Resource):
         This API resource provides catalog data to the user
     """
     def get(self):
-        return catalog.to_JSON()
+        return course_catalog.to_JSON()
 
 class TranscriptResource(Resource):
     """
@@ -43,8 +50,17 @@ class TranscriptResource(Resource):
 
         data = ast.literal_eval(args['transcript'])
 
-        print(data)
-        return data, 201
+        transcript = Transcript(data['major'],data['courses'])
+
+        degree = degree_catalog.get_degree(data['major'])
+
+        print(degree)
+        result = transcript.audit_transcript(degree)
+
+        print(result)
+
+        return result, 201
+
 
 api.add_resource(HelloWorld, '/')
 api.add_resource(CatalogResource, '/catalog')
