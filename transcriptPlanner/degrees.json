@@ -19,5 +19,53 @@
 
     "Physics": [
 
+    ],
+
+    "American Indians Studies Major" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["AIS105", "AIS205"],
+          "required" : 2
+      }
+      {
+          "name" : "ENL or AIS Requirements",
+          "courses" : ["ENL255", "AIS264", "HIS236", "RLN370"],
+          "required" : 1
+      }
+      {
+          "name" : "Electives",
+          "courses" : ["AIS208", "AIS233", "AIS264", "AIS299", "AIS305", "AIS320", "AIS332", "AIS364", "AIS396", "AIS399", "AIS405", "AIS408", "AIS490", "AIS495", "AIS 498", "AIS499", "ART290", "DAK111", "DAK112", "ENL255", "ENL355", "OJB111", "OJB112"],
+          "required" : 4
+      }
+    ],
+
+    "Studio Art Major" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["ART102", "ART107"],
+          "required" : 2
+      }
+      {
+          "name" : "Two Dimension Art Courses",
+          "courses" : ["ART118", "ART201", "ART223", "ART257"],
+          "required" : 1
+      }
+      {
+          "name" : "Three Dimension Art Courses",
+          "courses" : ["ART221", "ART250", "ART280"],
+          "required" : 1
+      }
+      {
+          "name" : "Electives",
+          "courses" : ["ART240", "ART349", "ART352", "ART382", "ART385", "ART386", "ART387", "ART388", "ART389", "ART390", "ART305", "ART405"],
+          "required" : 7
+      }
+    ],
+
+    "Graphic Design Major" : [
+      {
+          "name" : "Major Requirements",
+          "courses" : ["ART124", "ART125"]
+      }
     ]
 }
