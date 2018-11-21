@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import csv
-import json
-from Course import Course
-
-=======
 from Degree import Degree
-
 import json
 import ast
->>>>>>> master
+
 
 class Transcript:
     """
@@ -17,9 +10,10 @@ class Transcript:
         with respect to a given degree.
         Will contain list of courses as well as total credits
     """
-      def __init__(self,major, courses=[]):
+    def __init__(self,major, courses=[]):
         self.courses = courses
         self.major = major
+		self.credits_total = 0
     
     def audit_transcript(self,degree):
         """
@@ -62,7 +56,17 @@ class Transcript:
             self.courses = data['courses']
             self.major = data['major']
             print(self.courses)
-
+	
+	def sum_credits_in_transcript(self, courses):
+	"""
+        will take the courses[] built from Transcript.json 
+        file and sum up the credits
+        :returns integer sum total of the credits
+         associated with each courses in the list
+    """
+        for Course in courses:
+            self.credits_total = self.credits_total + Course.credit
+			
 
 t = Transcript('Computer Science')
 
