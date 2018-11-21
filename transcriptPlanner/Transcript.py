@@ -28,21 +28,23 @@ class Transcript:
             # adding an empty dictionary to the response list.
             response.append({})
             
-            # completed property contains the number of instances where the transcript has a degree requirement course
-            response[i]['completed'] = 0
+            # taken property contains the number of instances where the transcript has a degree requirement course
+            response[i]['taken'] = 0
             
             # this list contains all the original courses for the requirement.  This will be used 
             response[i]['all_courses'] = degree.degree_requirements[i]['courses']
             response[i]['incomplete'] = []
-    
+            response[i]['complete'] = []
             for j in range(len(degree.degree_requirements[i]['courses'])):
                 if degree.degree_requirements[i]['courses'][j] in self.courses:
-                    response[i]['completed'] += 1
+                    response[i]['taken'] += 1
+                    response[i]['complete'].append(degree.degree_requirements[i]['courses'][j])
                 else:
                     response[i]['incomplete'].append(degree.degree_requirements[i]['courses'][j])
 
             # if the count for the requirement met is greater than or equal to what the degree requires, then we have satisfied the requirement
-            response[i]['requirement_met'] = (response[i]['completed'] >= degree.degree_requirements[i]['required'])
+            response[i]['requirement_met'] = (response[i]['taken'] >= degree.degree_requirements[i]['required'])
+            response[i]['name'] = degree.degree_requirements[i]['name']
 
         print(response)
         return response
