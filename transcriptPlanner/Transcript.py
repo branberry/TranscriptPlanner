@@ -32,13 +32,13 @@ class Transcript:
             
             # this list contains all the original courses for the requirement.  This will be used 
             response[i]['all_courses'] = degree.degree_requirements[i]['courses']
-            response[i]['diff'] = []
+            response[i]['incomplete'] = []
     
             for j in range(len(degree.degree_requirements[i]['courses'])):
                 if degree.degree_requirements[i]['courses'][j] in self.courses:
                     response[i]['completed'] += 1
                 else:
-                    response[i]['diff'].append(degree.degree_requirements[i]['courses'][j])
+                    response[i]['incomplete'].append(degree.degree_requirements[i]['courses'][j])
 
             # if the count for the requirement met is greater than or equal to what the degree requires, then we have satisfied the requirement
             response[i]['requirement_met'] = (response[i]['completed'] >= degree.degree_requirements[i]['required'])
