@@ -13,7 +13,7 @@ class Transcript:
     def __init__(self, courses=[]):
         self.courses = courses
         self.credits_total = 0;
-
+		self.Difference =
     """
         will take the courses[] built from Transcript.json 
         file and sum up the credits
@@ -22,7 +22,7 @@ class Transcript:
     """
     def sum_credits_in_transcript(self, courses):
         for Course in courses:
-            self.credits_total = self.credits_total + Course.credits
+            self.credits_total = self.credits_total + Course.credit
         
 	
     """
@@ -32,6 +32,9 @@ class Transcript:
         difference between the transcript and requirement
     """
     """def auditor(self):(self, courses, Degrees):"""
+			possibly return
+			return difference (between transcript and degree[course ID,...]
+			
 
 
 
