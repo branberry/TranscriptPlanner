@@ -44,6 +44,7 @@ class Transcript:
             # if the count for the requirement met is greater than or equal to what the degree requires, then we have satisfied the requirement
             response[i]['requirement_met'] = (response[i]['taken'] >= degree.degree_requirements[i]['required'])
             response[i]['name'] = degree.degree_requirements[i]['name']
+            response[i]['remaining'] = degree.degree_requirements[i]['required'] - response[i]['taken'] 
 
         print(response)
         return response

@@ -1,0 +1,14 @@
+{
+    "computerScience" : [
+        {
+            "name" : "Major Requirements",
+            "courses": ["CSC 160", "CSC 170"],
+            "required": 5
+        },
+        {
+            "name" : "Electives",
+            "courses": ["CSC 395"],
+            "required": 2
+        }
+    ]
+}
