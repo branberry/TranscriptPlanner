@@ -1,5 +1,4 @@
 from Degree import Degree
-
 import json
 import ast
 
@@ -12,13 +11,13 @@ class Transcript:
     def __init__(self,major, courses=[]):
         self.courses = courses
         self.major = major
+		self.credits_total = 0
     
     def audit_transcript(self,degree):
         """
-            This method takes in a degree, and compares it with the transcript's 
-            completed courses
+            This method takes in a degree(list if req courses), 
+			and compares it with the transcript (loist of completed courses)
         """
-
         # contains a list of degree requirement objects
         response = []
 
@@ -57,7 +56,17 @@ class Transcript:
             self.courses = data['courses']
             self.major = data['major']
             print(self.courses)
-
+	
+	def sum_credits_in_transcript(self, courses):
+	"""
+        will take the courses[] built from Transcript.json 
+        file and sum up the credits
+        :returns integer sum total of the credits
+         associated with each courses in the list
+    """
+        for Course in courses:
+            self.credits_total = self.credits_total + Course.credit
+			
 
 t = Transcript('Computer Science')
 
