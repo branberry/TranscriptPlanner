@@ -13,14 +13,44 @@
 			<div>
 				<br>
 				<h3>Selected Courses</h3>
+
+						<base-table :data="user.courses"
+										>
+								<template slot="columns">
+									<th class="text-center">#</th>
+									<th>Name</th>
+									<th>Credits</th>
+									<th>Prerequisites</th>
+									<th>Course Number</th>
+									<th>Offered In</th>      
+									<th>Department</th>
+									<th>Description</th> 
+								</template>  
+								<template slot-scope="{row}">
+									<td>{{row.id}}</td>
+									<td>{{row.name}}</td>
+									<td>{{row.credits}}</td>
+									<td>{{row.prereqs}}</td>
+									<td>{{row.courseNum}}</td>
+									<td>{{row.offeredIn}}</td>
+									<td>{{row.department}}</td>
+									<td>{{row.description}}</td>
+								</template>    
+						</base-table>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-  import axios from 'axios';
+	import axios from 'axios';
+	import { BaseTable } from "@/components";
+
 
 	export default {
+		components: {
+				BaseTable
+		},
+		
 	  data() {
 	    return {
 	      user: {
@@ -31,6 +61,9 @@
 	      },
 
 				courses: [],
+
+				columns: ["id", "name", "credits", "offeredIn", "description", "department"]
+      
 	    }
 	  },
 	   

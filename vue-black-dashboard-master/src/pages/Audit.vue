@@ -60,7 +60,7 @@
 </template>
 <script>
     import axios from 'axios';
-      import { BaseTable } from "@/components";
+    import { BaseTable } from "@/components";
 
 
     const BASE_URL = "http://localhost:5000"

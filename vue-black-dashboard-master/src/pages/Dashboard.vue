@@ -1,6 +1,6 @@
 <template>
   <div>
-      <base-table :data="tableInformation.tableData"
+    <base-table :data="tableInformation.tableData"
             :columns="tableInformation.columns">
         <template slot="columns">
           <th class="text-center">#</th>
@@ -22,7 +22,7 @@
           <td>{{row.department}}</td>
           <td>{{row.description}}</td>
         </template>    
-  </base-table>
+    </base-table>
   </div>
 </template>
 <script>
@@ -56,7 +56,7 @@
         }
       }
     },
-
+    
     computed: {
 
     },
