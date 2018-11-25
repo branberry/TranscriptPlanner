@@ -11,7 +11,7 @@ class Transcript:
     def __init__(self,major, courses=[]):
         self.courses = courses
         self.major = major
-		self.credits_total = 0
+        self.credits_total = 0
     
     def audit_transcript(self,degree):
         """
@@ -57,13 +57,13 @@ class Transcript:
             self.major = data['major']
             print(self.courses)
 	
-	def sum_credits_in_transcript(self, courses):
-	"""
+    def sum_credits_in_transcript(self, courses):
+        """
         will take the courses[] built from Transcript.json 
         file and sum up the credits
         :returns integer sum total of the credits
-         associated with each courses in the list
-    """
+        associated with each courses in the list
+        """
         for Course in courses:
             self.credits_total = self.credits_total + Course.credit
 			

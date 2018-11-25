@@ -40,7 +40,7 @@
 </script>
 <style lang="sass">
 
-button 
+.button { 
     background-color: rgb(56, 239, 125)
     border: none
     color: white
@@ -51,9 +51,7 @@ button
     font-size: 16px
     margin: 4px 2px
     cursor: pointer
-
-     
-
+}
 
 </style>
 
