@@ -35,6 +35,11 @@
 									<td>{{row.offeredIn}}</td>
 									<td>{{row.department}}</td>
 									<td>{{row.description}}</td>
+									<td class="td-actions text-right">
+										<base-button type="danger" size="sm" icon @click="removeCourse(row.id)">
+											<i class="tim-icons icon-simple-remove"></i>
+										</base-button>
+         					 </td>
 								</template>    
 						</base-table>
 			</div>
@@ -73,6 +78,14 @@
 				console.log(course);
 				this.user.courses.push(course);
 				console.log(this.user);
+			},
+
+			removeCourse(id) {
+				for (let i = 0; i < this.user.courses.length; i++) {
+					if (this.user.courses[i].id === id) {
+						this.user.courses.splice(i,1);
+					}
+				}
 			}
 		},
 
