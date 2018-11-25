@@ -49,13 +49,14 @@
       
     },
       
-      data() {
-    return {
-     tableInformation : { columns: ["id", "name", "credits", "offeredIn", "description", "department"],
-        tableData: []
+    data() {
+      return {
+      tableInformation : { columns: ["id", "name", "credits", "offeredIn", "description", "department"],
+          tableData: []
+        }
       }
-    }
-  },
+    },
+
     computed: {
 
     },
@@ -72,7 +73,6 @@
         })
         .then(res => {
           this.tableInformation['tableData'] = res.courses;
-          console.log(res.courses);
         });
 
     },
