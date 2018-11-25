@@ -5,16 +5,15 @@
 
 			<h3>Course Catalog List</h3>
 			<base-dropdown title-classes="btn btn-secondary"
-               title="Add a Course">
+               title="Add a Course" >
 
-					<a v-for="course in courses" v-bind:key="course.id" class="dropdown-item" href="#">{{course.courseNum}}</a>
+					<option v-for="course in courses" v-bind:key="course.id" class="dropdown-item" v-bind:value="course" @click="addCourse(course)">{{course.courseNum}}</option>
 
 			</base-dropdown>
-			<form @submit.prevent="handleSubmit">
-
+			<div>
 				<br>
-				<button type="submit">Submit</button>
-			</form>
+				<h3>Selected Courses</h3>
+			</div>
 		</div>
 	</div>
 </template>
@@ -26,23 +25,22 @@
 	    return {
 	      user: {
 	
-	        classes: ''
+	        courses: []
 	       
 	        
 	      },
 
-				courses: []
+				courses: [],
 	    }
 	  },
 	   
 		methods: {
-			handleSubmit() {
-				var classIn = this.user.classes;
-				var classArr = classIn.split("\n");
-
-			}
 			
-
+			addCourse(course) {
+				console.log(course);
+				this.user.courses.push(course);
+				console.log(this.user);
+			}
 		},
 
     mounted() {
