@@ -303,6 +303,7 @@ button {
 	padding: 2em;
 	margin-right: 1em;
 	margin-top: 1em;
+	border-radius: 8px;
 }
 
 </style>
