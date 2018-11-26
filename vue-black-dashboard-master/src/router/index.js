@@ -7,11 +7,11 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes, // short for routes: routes
   linkExactActiveClass: "active",
-  scrollBehavior: (to) => {
+  scrollBehavior: to => {
     if (to.hash) {
-      return {selector: to.hash}
+      return { selector: to.hash };
     } else {
-      return { x: 0, y: 0 }
+      return { x: 0, y: 0 };
     }
   }
 });

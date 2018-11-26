@@ -33,13 +33,19 @@ class HelloWorld(Resource):
     def get(self):
         return {'hello': 'world'}
 
-class CatalogResource(Resource):
+class CourseCatalogResource(Resource):
     """
-        This API resource provides catalog data to the user
+        This API resource provides course catalog data to the user
     """
     def get(self):
         return course_catalog.to_JSON()
 
+class DegreeCatalogResource(Resource):
+    """
+        This API resource provides degree catalog data to the user     
+    """
+    def get(self):
+        return degree_catalog.to_JSON()
 class TranscriptResource(Resource):
     """
         This API endpoint handles the transcript being sent to and from the frontend
@@ -63,7 +69,8 @@ class TranscriptResource(Resource):
 
 
 api.add_resource(HelloWorld, '/')
-api.add_resource(CatalogResource, '/catalog')
+api.add_resource(CourseCatalogResource, '/coursecatalog')
+api.add_resource(DegreeCatalogResource, '/degreecatalog')
 api.add_resource(TranscriptResource,'/transcript')
 
 if __name__ == '__main__':

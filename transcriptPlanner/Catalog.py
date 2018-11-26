@@ -66,4 +66,7 @@ class DegreeCatalog:
     def get_degree(self, degree_name):
         index = next((index for (index, d) in enumerate(self.degrees) if d.major == degree_name), None)
         return self.degrees[index]
+        
+    def to_JSON(self):
+        return json.dumps(self, default=lambda o : o.__dict__, sort_keys=True, indent=4)
 
