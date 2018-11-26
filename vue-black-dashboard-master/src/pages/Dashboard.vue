@@ -65,7 +65,7 @@
     },
     mounted() {
       axios
-        .get("http://127.0.0.1:5000/catalog")
+        .get("http://127.0.0.1:5000/coursecatalog")
         .then( res => {
 
           return JSON.parse(res.data);

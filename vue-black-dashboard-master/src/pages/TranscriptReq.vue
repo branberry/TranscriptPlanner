@@ -10,6 +10,12 @@
 					<option v-for="course in courses" v-bind:key="course.id" class="dropdown-item" v-bind:value="course" @click="addCourse(course)">{{course.courseNum}}</option>
 
 			</base-dropdown>
+						<base-dropdown title-classes="btn btn-secondary"
+               title="Select Major" >
+
+					<option v-for="major in majors" v-bind:key="major.id" class="dropdown-item" v-bind:value="major" @click="selectMajor(major)">{{major.name}}</option>
+
+			</base-dropdown>
 			 <base-button type="default" @click="modals.auditModal = true">Audit Transcript</base-button>
 				<modal :show.sync="modals.auditModal" body-classes="p-0" modal-classes="modal-dialog-centered modal-sm">
 					<card type="secondary"
@@ -120,6 +126,7 @@
 				modals: {
 					auditModal: false
 				},
+				auditedTranscript: [],
 				columns: ["id", "name", "credits", "offeredIn", "description", "department"]
       
 	    }
@@ -131,7 +138,12 @@
 			 * The method takes in a course object, and adds it to the user state array
 			 */
 			addCourse(course) {
-				this.user.courses.push(course);
+				
+				// checking if the object already exists in the array
+				if (this.user.courses.indexOf(course) === -1) {
+					this.user.courses.push(course);
+				}
+				
 			},
 
 			removeCourse(id) {
@@ -145,7 +157,7 @@
 
     mounted() {
       axios
-        .get("http://127.0.0.1:5000/catalog")
+        .get("http://127.0.0.1:5000/coursecatalog")
         .then( res => {
 
           return JSON.parse(res.data);
