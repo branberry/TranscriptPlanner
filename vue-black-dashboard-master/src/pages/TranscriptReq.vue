@@ -86,7 +86,8 @@
 									<th>Course Number</th>
 									<th>Offered In</th>      
 									<th>Department</th>
-									<th>Description</th> 
+									<th>Description</th>
+									<th></th> 
 								</template>  
 								<template slot-scope="{row}">
 									<td>{{row.id}}</td>
@@ -105,6 +106,10 @@
 								</template>    
 						</base-table>
 			</div>
+			<br>
+			<a id="dummy"></a>
+			<button id="dwn" v-on:click="downloadCSV()">Download as CSV</button>
+			<button id="dwn" v-on:click="downloadJSON()">Download as JSON</button>
 		</div>
 	</div>
 </template>
@@ -235,17 +240,22 @@
 </script>
 <style lang="scss">
 
-.button { 
+button { 
     background-color: rgb(56, 239, 125);
     border: none;
-    color: white;
-    padding: 15px 20px;
+    color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+#dwn{
+	padding: 2em;
+	margin-right: 1em;
+	margin-top: 1em;
 }
 
 </style>
