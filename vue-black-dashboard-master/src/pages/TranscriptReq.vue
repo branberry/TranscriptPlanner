@@ -24,7 +24,7 @@
 									<th>Course Number</th>
 									<th>Offered In</th>      
 									<th>Department</th>
-									<th>Description</th> 
+									<th>Description</th>
 								</template>  
 								<template slot-scope="{row}">
 									<td>{{row.id}}</td>
@@ -38,6 +38,9 @@
 								</template>    
 						</base-table>
 			</div>
+			<br>
+			<a id="dummy"></a>
+			<button v-on:click="downloadJSON()">Download as CSV</button><br><br>
 		</div>
 	</div>
 </template>
@@ -73,6 +76,24 @@
 				console.log(course);
 				this.user.courses.push(course);
 				console.log(this.user);
+			},
+			downloadJSON() {
+
+					var csv = 'ID,name,credits,prereqs,courseNum,offeredIn,description,department\r\n';
+					this.user.courses.forEach(function(row) {
+									csv += row.id + ',"' + row.name + '",' + row.credits + ',"'  + row.prereqs + '",' + row.courseNum + ',' + row.offeredIn + ',"' + row.description + '",' + row.department ;
+									csv += "\r\n";
+					});
+			
+					console.log(csv);
+
+					var hiddenElement = document.getElementById('dummy');
+					hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+					hiddenElement.target = '_blank';
+					hiddenElement.download = 'courses.csv';
+					hiddenElement.click();
+
+
 			}
 		},
 
@@ -93,11 +114,10 @@
 </script>
 <style lang="scss">
 
-.button { 
+button { 
     background-color: rgb(56, 239, 125);
     border: none;
-    color: white;
-    padding: 15px 20px;
+    color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
