@@ -10,12 +10,13 @@
 					<option v-for="course in courses" v-bind:key="course.id" class="dropdown-item" v-bind:value="course" @click="addCourse(course)">{{course.courseNum}}</option>
 
 			</base-dropdown>
-						<base-dropdown title-classes="btn btn-secondary"
+			<base-dropdown title-classes="btn btn-secondary"
                title="Select Major" >
 
 					<option v-for="degree in degrees" v-bind:key="degree.major" class="dropdown-item" v-bind:value="degree" @click="selectDegree(degree)">{{degree.major}}</option>
 
 			</base-dropdown>
+			<br>
 			 <base-button type="default" @click="auditTranscript()">Audit Transcript</base-button>
 				<modal :show.sync="modals.auditModal" body-classes="p-0" >
 					<card type="secondary"
@@ -246,7 +247,7 @@
 			},
 			downloadJSON() {
 
-					var major /* set major here */;
+					var major = this.selectedDegreeName;
 					var json = ' {\r\n\t"transcript": {\r\n\t\t"major": "' + major + '",\r\n\t\t"courses": [';
 				
 					this.displayedCourses.forEach(function(row) {
