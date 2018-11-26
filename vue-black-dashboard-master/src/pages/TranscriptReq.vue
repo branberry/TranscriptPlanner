@@ -36,7 +36,7 @@
 									<td>{{row.offeredIn}}</td>
 									<td>{{row.department}}</td>
 									<td>{{row.description}}</td>
-									<td> <button v-on:click="removeCourse(/*send index somehow*/)">Remove</button> </td>
+									<td> <button v-on:click="removeCourse(row)">Remove</button> </td>
 								</template>    
 						</base-table>
 			</div>
@@ -79,9 +79,12 @@
 				this.user.courses.push(course);
 				console.log(this.user);
 			},
-			removeCourse() {
+			removeCourse(inf) {
 
-				// to do by index
+				var index = this.user.courses.indexOf(inf);
+				if (index > -1) {
+       				this.user.courses.splice(index, 1);
+    			}
 
 			},
 			downloadCSV() {
