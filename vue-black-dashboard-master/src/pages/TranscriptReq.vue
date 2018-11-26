@@ -42,9 +42,8 @@
 			</div>
 			<br>
 			<a id="dummy"></a>
-			<button v-on:click="downloadCSV()">Download as CSV</button><br><br>
-
-			<button v-on:click="downloadJSON()">Download as JSON</button>
+			<button id="dwn" v-on:click="downloadCSV()">Download as CSV</button>
+			<button id="dwn" v-on:click="downloadJSON()">Download as JSON</button>
 		</div>
 	</div>
 </template>
@@ -148,6 +147,11 @@ button {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+#dwn{
+	padding: 2em;
+	margin-right: 1em;
 }
 
 </style>
