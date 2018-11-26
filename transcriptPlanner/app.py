@@ -52,7 +52,6 @@ class TranscriptResource(Resource):
     """
     def post(self):
         args = parser.parse_args()
-        print(args['transcript'])
 
         data = ast.literal_eval(args['transcript'])
 
@@ -60,10 +59,7 @@ class TranscriptResource(Resource):
 
         degree = degree_catalog.get_degree(data['major'])
 
-        print(degree)
         result = transcript.audit_transcript(degree)
-
-        print(result)
 
         return result, 201
 
