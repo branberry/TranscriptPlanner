@@ -10,6 +10,56 @@
 					<option v-for="course in courses" v-bind:key="course.id" class="dropdown-item" v-bind:value="course" @click="addCourse(course)">{{course.courseNum}}</option>
 
 			</base-dropdown>
+			 <base-button type="default" @click="modals.auditModal = true">Audit Transcript</base-button>
+				<modal :show.sync="modals.auditModal" body-classes="p-0" modal-classes="modal-dialog-centered modal-sm">
+					<card type="secondary"
+                  header-classes="bg-white pb-5"
+                  body-classes="px-lg-5 py-lg-5"
+                  class="border-0 mb-0">
+     
+                    <div class="text-muted text-center mb-3">
+                        <small>Transcript Audit Results</small>
+                    </div>
+										 <h4>Major: Add Major Here</h4> 
+            <br><br>
+            <base-table :data="auditedTranscript">
+            <template slot="columns">
+                <th>Requirement</th>
+            </template>  
+            <template slot-scope="{row}">
+                <td>{{row.name}}</td>
+                <td>
+                    <base-table :data="row.complete">
+                        <template slot="columns" >
+                            <th>Completed Courses</th>
+                        </template>
+                        <template slot-scope="{row}">
+                            
+                            <td>{{row}}</td>
+                        </template>
+                    </base-table>
+                </td>
+                <td v-if="!row.requirement_met">
+                    <base-table :data="row.incomplete">
+                        <template slot="columns" >
+                            <th>Incomplete Courses</th>
+                        </template>
+                        <template slot-scope="{row}">
+                            
+                            <td>{{row}}</td>
+                        </template>
+                    </base-table>
+                </td>
+                <td v-if="!row.requirement_met">{{row.remaining}} Remaining</td>
+                <td v-else>Requirement Satisified</td>
+     
+            </template>    
+            </base-table>
+
+
+            </card>
+				</modal>
+
 			<div>
 				<br>
 				<h3>Selected Courses</h3>
@@ -48,12 +98,16 @@
 </template>
 <script>
 	import axios from 'axios';
+	import Modal from '@/components/Modal';
+
 	import { BaseTable } from "@/components";
+	 
 
 
 	export default {
 		components: {
-				BaseTable
+				BaseTable,
+				Modal
 		},
 		
 	  data() {
@@ -61,12 +115,11 @@
 	      user: {
 	
 	        courses: []
-	       
-	        
 	      },
-
 				courses: [],
-
+				modals: {
+					auditModal: false
+				},
 				columns: ["id", "name", "credits", "offeredIn", "description", "department"]
       
 	    }
@@ -74,10 +127,11 @@
 	   
 		methods: {
 			
+			/**
+			 * The method takes in a course object, and adds it to the user state array
+			 */
 			addCourse(course) {
-				console.log(course);
 				this.user.courses.push(course);
-				console.log(this.user);
 			},
 
 			removeCourse(id) {
