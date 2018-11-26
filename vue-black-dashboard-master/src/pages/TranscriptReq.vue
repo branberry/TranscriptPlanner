@@ -228,7 +228,39 @@
 
 						console.log(this.auditedTranscript);
 				})
-		}
+		},
+		downloadCSV() {
+					var csv = 'ID,name,credits,prereqs,courseNum,offeredIn,description,department\r\n';
+					this.displayedCourses.forEach(function(row) {
+									csv += row.id + ',"' + row.name + '",' + row.credits + ',"'  + row.prereqs + '",' + row.courseNum + ',' + row.offeredIn + ',"' + row.description + '",' + row.department ;
+									csv += "\r\n";
+					});
+
+					var hiddenElement = document.getElementById('dummy');
+					hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+					hiddenElement.target = '_blank';
+					hiddenElement.download = 'courses.csv';
+					hiddenElement.click();
+
+
+			},
+			downloadJSON() {
+
+					var major /* set major here */;
+					var json = ' {\r\n\t"transcript": {\r\n\t\t"major": "' + major + '",\r\n\t\t"courses": [';
+				
+					this.displayedCourses.forEach(function(row) {
+						json += '\r\n\t\t"' + row.courseNum + '",'
+					});
+					json = json.substring(0, json.length-1);
+					json += '\r\n\t\t]\r\n\t}\r\n}'
+			
+					var hiddenElement = document.getElementById('dummy');
+					hiddenElement.href = 'data:text/json;charset=utf-8,' + encodeURI(json);
+					hiddenElement.target = '_blank';
+					hiddenElement.download = 'courses.json';
+					hiddenElement.click();
+			}
 		},
 
     mounted() {
