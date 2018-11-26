@@ -2,16 +2,15 @@
   <div>
     <div id="app">
       <h1>Audit Your Transcript</h1>
+      <br />
+      <!-- Upload! -->
+      <form enctype="multipart/form-data">
+        <h4>Upload your transcipt here</h4>
+        <label class="text-reader">
+          <input type="file" @change="loadTextFromFile" />
+        </label>
+      </form>
 
-      <div class="container">
-        <!-- Upload! -->
-        <form enctype="multipart/form-data">
-          <h4>Upload your transcipt here</h4>
-          <label class="text-reader">
-            <input type="file" @change="loadTextFromFile" />
-          </label>
-        </form>
-      </div>
       <br /><br /><br />
       <div>
         <h1>Audit Results</h1>
