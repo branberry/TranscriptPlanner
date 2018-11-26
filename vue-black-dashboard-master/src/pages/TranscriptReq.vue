@@ -25,7 +25,7 @@
 									<th>Offered In</th>      
 									<th>Department</th>
 									<th>Description</th>
-									<th>Remove</th> 
+									<th></th> 
 								</template>  
 								<template slot-scope="{row}">
 									<td>{{row.id}}</td>
@@ -152,6 +152,7 @@ button {
 #dwn{
 	padding: 2em;
 	margin-right: 1em;
+	margin-top: 1em;
 }
 
 </style>
