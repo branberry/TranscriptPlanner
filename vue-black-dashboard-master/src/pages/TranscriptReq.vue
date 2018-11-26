@@ -4,7 +4,7 @@
       <h1>Transcript Request</h1>
 
       <h3>Course Catalog List</h3>
-      <base-dropdown title-classes="btn btn-secondary" title="Add a Course">
+      <base-dropdown title-classes="btn btn-secondary" menu-classes="dropdown-black" title="Add a Course">
         <option
           v-for="course in courses"
           v-bind:key="course.id"
@@ -14,7 +14,7 @@
           >{{ course.courseNum }}</option
         >
       </base-dropdown>
-      <base-dropdown title-classes="btn btn-secondary" title="Select Major">
+      <base-dropdown title-classes="btn btn-secondary" menu-classes="dropdown-black" title="Select Major">
         <option
           v-for="degree in degrees"
           v-bind:key="degree.major"
@@ -298,6 +298,18 @@ export default {
       })
       .then(res => {
         this.courses = res.courses;
+
+        this.courses.sort( (a,b) => {
+          let comparison = 0;
+
+          if (a.courseNum > b.courseNum) {
+            comparison = 1;
+          } else if (a.courseNum < b.courseNum){
+            comparison = -1;
+          }
+
+          return comparison;
+        })
       });
 
     axios
@@ -305,6 +317,7 @@ export default {
       .then(res => JSON.parse(res.data))
       .then(res => {
         this.degrees = res.degrees;
+
       });
   }
 };
