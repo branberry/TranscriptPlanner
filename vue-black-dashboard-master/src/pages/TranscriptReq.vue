@@ -43,6 +43,8 @@
 			<br>
 			<a id="dummy"></a>
 			<button v-on:click="downloadCSV()">Download as CSV</button><br><br>
+
+			<button v-on:click="downloadJSON()">Download as JSON</button>
 		</div>
 	</div>
 </template>
@@ -59,10 +61,8 @@
 	  data() {
 	    return {
 	      user: {
-	
 	        courses: []
-	       
-	        
+
 	      },
 
 				courses: [],
@@ -85,14 +85,11 @@
 
 			},
 			downloadCSV() {
-
 					var csv = 'ID,name,credits,prereqs,courseNum,offeredIn,description,department\r\n';
 					this.user.courses.forEach(function(row) {
 									csv += row.id + ',"' + row.name + '",' + row.credits + ',"'  + row.prereqs + '",' + row.courseNum + ',' + row.offeredIn + ',"' + row.description + '",' + row.department ;
 									csv += "\r\n";
 					});
-			
-					console.log(csv);
 
 					var hiddenElement = document.getElementById('dummy');
 					hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
@@ -101,6 +98,23 @@
 					hiddenElement.click();
 
 
+			},
+			downloadJSON() {
+
+					var major /* set major here */;
+					var json = ' {\r\n\t"transcript": {\r\n\t\t"major": "' + major + '",\r\n\t\t"courses": [';
+				
+					this.user.courses.forEach(function(row) {
+						json += '\r\n\t\t"' + row.courseNum + '",'
+					});
+					json = json.substring(0, json.length-1);
+					json += '\r\n\t\t]\r\n\t}\r\n}'
+			
+					var hiddenElement = document.getElementById('dummy');
+					hiddenElement.href = 'data:text/json;charset=utf-8,' + encodeURI(json);
+					hiddenElement.target = '_blank';
+					hiddenElement.download = 'courses.json';
+					hiddenElement.click();
 			}
 		},
 
