@@ -42,7 +42,7 @@
 			</div>
 			<br>
 			<a id="dummy"></a>
-			<button v-on:click="downloadJSON()">Download as CSV</button><br><br>
+			<button v-on:click="downloadCSV()">Download as CSV</button><br><br>
 		</div>
 	</div>
 </template>
@@ -84,7 +84,7 @@
 				// to do by index
 
 			},
-			downloadJSON() {
+			downloadCSV() {
 
 					var csv = 'ID,name,credits,prereqs,courseNum,offeredIn,description,department\r\n';
 					this.user.courses.forEach(function(row) {
