@@ -108,6 +108,8 @@
 
                 reader.onload = event => {
                     this.transcript = JSON.parse(reader.result).transcript;
+                    console.log("transcript uploaded.");
+                    console.log(this.transcript)
                     this.upload(JSON.parse(reader.result));
                 }
             },
@@ -115,6 +117,8 @@
              * This function handles the uploading of form data to the backend
              */
                 upload(formData) {
+                    		console.log(formData)
+
                 const url = `${BASE_URL}/transcript`;
                 return axios.post(url, formData)
                     // retrieve data
