@@ -165,14 +165,22 @@
 		
 			},
 
+			/**
+			 * This method allows a user to remove a course based on the course ID number
+			 */
 			removeCourse(id) {
 				for (let i = 0; i < this.user.courses.length; i++) {
-					if (this.user.courses[i].id === id) {
+					if (this.displayedCourses[i].id === id) {
+						// this removes a course by a given index
 						this.user.courses.splice(i,1);
+						this.displayedCourses.splice(i,1);
 					}
 				}
 			},
 
+			/**
+			 * This course selects a degree that a user chooses
+			 */
 			selectDegree(degree) {
 				
 				this.selectedDegree = degree;
@@ -180,8 +188,15 @@
 
 			},
 
+			/**
+			 * This method is called when a user audits a transcript.
+			 * It displays a modal that shows the audited transcript response.  It displays what 
+			 * the user has completed and still needs to complete
+			 */
 			auditTranscript() {
 				this.modals.auditModal = true;
+
+				// we only want to call the 
 				if (this.selectedDegree !== undefined) {
 
 					let request = {};
