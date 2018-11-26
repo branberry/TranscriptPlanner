@@ -25,6 +25,7 @@
 									<th>Offered In</th>      
 									<th>Department</th>
 									<th>Description</th>
+									<th>Remove</th> 
 								</template>  
 								<template slot-scope="{row}">
 									<td>{{row.id}}</td>
@@ -35,6 +36,7 @@
 									<td>{{row.offeredIn}}</td>
 									<td>{{row.department}}</td>
 									<td>{{row.description}}</td>
+									<td> <button v-on:click="removeCourse(/*send index somehow*/)">Remove</button> </td>
 								</template>    
 						</base-table>
 			</div>
@@ -76,6 +78,11 @@
 				console.log(course);
 				this.user.courses.push(course);
 				console.log(this.user);
+			},
+			removeCourse() {
+
+				// to do by index
+
 			},
 			downloadJSON() {
 
