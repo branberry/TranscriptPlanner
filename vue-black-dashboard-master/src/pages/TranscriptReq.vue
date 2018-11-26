@@ -76,12 +76,12 @@
         </card>
       </modal>
       <div>
-        <h3>Selected Degree</h3>
-
+        <h3>Selected Degree:  
         <span v-if="this.selectedDegreeName !== ''">{{
           this.selectedDegreeName
         }}</span>
-        <span v-else>None</span>
+        <span v-else>None</span></h3>
+
       </div>
       <div>
         <br />
