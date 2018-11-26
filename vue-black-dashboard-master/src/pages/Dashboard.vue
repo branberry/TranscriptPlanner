@@ -17,7 +17,7 @@
       <template slot-scope="{ row }">
         <td>{{ row.id }}</td>
         <td>{{ row.name }}</td>
-        <td>{{ row.credits }}</td>
+        <td>{{ row.credit }}</td>
         <td>{{ row.prereqs }}</td>
         <td>{{ row.courseNum }}</td>
         <td>{{ row.offeredIn }}</td>
