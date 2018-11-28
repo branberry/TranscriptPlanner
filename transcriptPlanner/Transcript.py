@@ -57,12 +57,15 @@ class Transcript:
                 completed =  True
                 remaining_courses = 0
                 for requirement in requirements:
-                    remaining_courses = max(0,requirement.remaining)
+                    remaining_courses += max(0,requirement['remaining'])
+                    print(remaining_courses)
                     if not requirement['requirement_met']:
                         completed = False
                         break
-                if completed:
+                if completed or remaining_courses == 1:
                     reccommendations.append(degree)
+
+
 
 
 
