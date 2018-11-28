@@ -174,7 +174,8 @@ export default {
      */
     addCourse(course) {
       // checking if the object already exists in the array
-      if (this.user.courses.indexOf(course) === -1) {
+      if (this.displayedCourses.indexOf(course) === -1) {
+        console.log(this.displayedCourses.indexOf(course))
         this.displayedCourses.push(course);
         this.user.courses.push(course.courseNum);
       }
