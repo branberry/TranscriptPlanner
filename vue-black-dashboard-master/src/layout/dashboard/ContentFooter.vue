@@ -8,9 +8,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://blog.creative-tim.com">
-            Blog
-          </a>
+          <a class="nav-link" href="http://blog.creative-tim.com"> Blog </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="http://www.creative-tim.com/license">
@@ -19,21 +17,22 @@
         </li>
       </ul>
       <div class="copyright">
-        © {{year}} made by
-        <a href="https://www.binarcode.com" target="_blank">Binar Code</a>&nbsp;&
-        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+        © {{ year }} made by
+        <a href="https://www.binarcode.com" target="_blank">Binar Code</a
+        >&nbsp;&
+        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+        for a better web.
       </div>
     </div>
   </footer>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        year: new Date().getFullYear()
-      }
-    }
-  };
+export default {
+  data() {
+    return {
+      year: new Date().getFullYear()
+    };
+  }
+};
 </script>
-<style>
-</style>
+<style></style>

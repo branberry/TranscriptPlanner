@@ -55,7 +55,9 @@ class Transcript:
                 requirements = self.audit_transcript(degree)
 
                 completed =  True
+                remaining_courses = 0
                 for requirement in requirements:
+                    remaining_courses = max(0,requirement.remaining)
                     if not requirement['requirement_met']:
                         completed = False
                         break
