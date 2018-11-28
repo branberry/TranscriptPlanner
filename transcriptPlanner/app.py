@@ -29,21 +29,6 @@ test_transcript.load_transcript('transcriptExample.json')
 
 test_degree = degree_catalog.get_degree('ComputerScienceBA')
 
-for d in degree_catalog.degrees:
-    reccommendations = []
-    if d.major != test_transcript.major:
-        res = test_transcript.audit_transcript(d)
-
-        completed = True
-        for requirement in res:
-           if not requirement['requirement_met']:
-               completed = False
-               break
-        if completed:
-            print(d.major)
-            reccommendations.append(d)
-        print(reccommendations)
-
 test_transcript.reccommend(degree_catalog)       
 
 #print(test_transcript.audit_transcript(degree_catalog.get_degree('Manangement Information System Major')))
@@ -73,7 +58,11 @@ class TranscriptResource(Resource):
     """
         This API endpoint handles the transcript being sent to and from the frontend
     """
+
     def post(self):
+        """
+            This method handles a post request to audit a transcript
+        """
         args = parser.parse_args()
 
         data = ast.literal_eval(args['transcript'])
@@ -82,9 +71,15 @@ class TranscriptResource(Resource):
 
         degree = degree_catalog.get_degree(data['major'])
 
+        result = {}
 
-        result = transcript.audit_transcript(degree)
-        
+        audit = transcript.audit_transcript(degree)
+
+        result['audit'] = audit
+
+        reccommendations = transcript.reccommend(degree_catalog)
+
+        result['reccommendations'] = reccommendations
 
         return result, 201
 

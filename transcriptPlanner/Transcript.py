@@ -63,7 +63,8 @@ class Transcript:
                         completed = False
                         break
                 if completed or remaining_courses == 1:
-                    reccommendations.append(degree)
+                    reccommendations.append(degree.to_JSON())
+        return reccommendations
 
 
 
