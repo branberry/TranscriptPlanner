@@ -60,7 +60,6 @@ class DegreeCatalog:
             
             for d in data:
                 degree = Degree(d,data[d])
-                print(data[d])
                 self.degrees.append(degree)
 
     def get_degree(self, degree_name):

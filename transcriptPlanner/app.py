@@ -23,9 +23,32 @@ course_catalog.load_courses('coursecatalog.csv')
 degree_catalog = DegreeCatalog()
 degree_catalog.load_degrees('degrees.json')
 
+test_transcript = Transcript('ComputerScienceBA')
+test_transcript.load_transcript('transcriptExample.json')
+
 
 test_degree = degree_catalog.get_degree('ComputerScienceBA')
 
+for d in degree_catalog.degrees:
+    reccommendations = []
+    if d.major != test_transcript.major:
+        res = test_transcript.audit_transcript(d)
+
+        completed = True
+        for requirement in res:
+           if not requirement['requirement_met']:
+               completed = False
+               break
+        if completed:
+            print(d.major)
+            reccommendations.append(d)
+        print(reccommendations)
+
+test_transcript.reccommend(degree_catalog)       
+
+#print(test_transcript.audit_transcript(degree_catalog.get_degree('Manangement Information System Major')))
+
+#print(res)
 class HelloWorld(Resource):
     """
         Test REST Endpoint
@@ -52,7 +75,6 @@ class TranscriptResource(Resource):
     """
     def post(self):
         args = parser.parse_args()
-        print(args['transcript'])
 
         data = ast.literal_eval(args['transcript'])
 
@@ -60,10 +82,9 @@ class TranscriptResource(Resource):
 
         degree = degree_catalog.get_degree(data['major'])
 
-        print(degree)
-        result = transcript.audit_transcript(degree)
 
-        print(result)
+        result = transcript.audit_transcript(degree)
+        
 
         return result, 201
 

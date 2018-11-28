@@ -10,8 +10,8 @@
 					<option v-for="course in courses" v-bind:key="course.id" class="dropdown-item" v-bind:value="course" @click="addCourse(course)">{{course.courseNum}}</option>
 
 			</base-dropdown>
-						<base-dropdown title-classes="btn btn-secondary"
-               title="Select Major" >
+			<base-dropdown title-classes="btn btn-secondary"
+					title="Select Major" >
 
 					<option v-for="degree in degrees" v-bind:key="degree.major" class="dropdown-item" v-bind:value="degree" @click="selectDegree(degree)">{{degree.major}}</option>
 
@@ -59,11 +59,8 @@
                 </td>
                 <td v-if="!row.requirement_met">{{row.remaining}} Remaining</td>
                 <td v-else>Requirement Satisified</td>
-     
             </template>    
             </base-table>
-
-
             </card>
 				</modal>
 			<div>
@@ -157,12 +154,10 @@
 			addCourse(course) {
 				
 				// checking if the object already exists in the array
-				if (this.user.courses.indexOf(course) === -1) {
+				if (this.user.courses.indexOf(course.courseNum) === -1 && this.displayedCourses.indexOf(course)) {
 					this.displayedCourses.push(course);
 					this.user.courses.push(course.courseNum);
 				}
-
-		
 			},
 
 			/**
@@ -182,10 +177,8 @@
 			 * This course selects a degree that a user chooses
 			 */
 			selectDegree(degree) {
-				
 				this.selectedDegree = degree;
 				this.selectedDegreeName = degree.major;
-
 			},
 
 			/**
@@ -215,20 +208,20 @@
 	 */
 		upload(formData) {
 
-		console.log(formData);
-		const url = `${BASE_URL}/transcript`;
-		return axios.post(url, formData)
-				// retrieve data
-				.then(res => {
-						return res.data;
-						})
-				.then(res => {
+			console.log(formData);
+			const url = `${BASE_URL}/transcript`;
+			return axios.post(url, formData)
+					// retrieve data
+					.then(res => {
+							return res.data;
+							})
+					.then(res => {
 
-						this.auditedTranscript = res;
+							this.auditedTranscript = res;
 
-						console.log(this.auditedTranscript);
-				})
-		}
+							console.log(this.auditedTranscript);
+					})
+			}
 		},
 
     mounted() {
@@ -267,7 +260,7 @@ button {
     cursor: pointer;
 }
 
-#dwn{
+#dwn {
 	padding: 2em;
 	margin-right: 1em;
 	margin-top: 1em;

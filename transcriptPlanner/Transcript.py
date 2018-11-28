@@ -45,17 +45,32 @@ class Transcript:
             response[i]['name'] = degree.degree_requirements[i]['name']
             response[i]['remaining'] = degree.degree_requirements[i]['required'] - response[i]['taken'] 
 
-        print(response)
         return response
+
+    def reccommend(self, degree_catalog):
+        reccommendations = []
+
+        for degree in degree_catalog.degrees:
+            if degree.major != self.major:
+                requirements = self.audit_transcript(degree)
+
+                completed =  True
+                for requirement in requirements:
+                    if not requirement['requirement_met']:
+                        completed = False
+                        break
+                if completed:
+                    reccommendations.append(degree)
+
+
 
     def load_transcript(self, file):
 
         with open(file) as json_file:
             data = json_file.read()
             data = ast.literal_eval(data)
-            self.courses = data['courses']
-            self.major = data['major']
-            print(self.courses)
+            self.courses = data['transcript']['courses']
+            self.major = data['transcript']['major']
 	
     def sum_credits_in_transcript(self, courses):
         """
