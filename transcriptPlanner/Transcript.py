@@ -11,7 +11,7 @@ class Transcript:
     def __init__(self,major, courses=[]):
         self.courses = courses
         self.major = major
-		self.credits_total = 0
+        self.credits_total = 0
     
     def audit_transcript(self,degree):
         """
@@ -45,25 +45,46 @@ class Transcript:
             response[i]['name'] = degree.degree_requirements[i]['name']
             response[i]['remaining'] = degree.degree_requirements[i]['required'] - response[i]['taken'] 
 
-        print(response)
         return response
+
+    def reccommend(self, degree_catalog):
+        reccommendations = []
+
+        for degree in degree_catalog.degrees:
+            if degree.major != self.major:
+                requirements = self.audit_transcript(degree)
+
+                completed =  True
+                remaining_courses = 0
+                for requirement in requirements:
+                    remaining_courses += max(0,requirement['remaining'])
+                    print(remaining_courses)
+                    if not requirement['requirement_met']:
+                        completed = False
+                        break
+                if completed or remaining_courses == 1:
+                    reccommendations.append(degree.to_JSON())
+        return reccommendations
+
+
+
+
 
     def load_transcript(self, file):
 
         with open(file) as json_file:
             data = json_file.read()
             data = ast.literal_eval(data)
-            self.courses = data['courses']
-            self.major = data['major']
-            print(self.courses)
+            self.courses = data['transcript']['courses']
+            self.major = data['transcript']['major']
 	
-	def sum_credits_in_transcript(self, courses):
-	"""
+    def sum_credits_in_transcript(self, courses):
+        """
         will take the courses[] built from Transcript.json 
         file and sum up the credits
         :returns integer sum total of the credits
-         associated with each courses in the list
-    """
+        associated with each courses in the list
+        """
         for Course in courses:
             self.credits_total = self.credits_total + Course.credit
 			

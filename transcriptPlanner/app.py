@@ -23,9 +23,17 @@ course_catalog.load_courses('coursecatalog.csv')
 degree_catalog = DegreeCatalog()
 degree_catalog.load_degrees('degrees.json')
 
+test_transcript = Transcript('ComputerScienceBA')
+test_transcript.load_transcript('transcriptExample.json')
+
 
 test_degree = degree_catalog.get_degree('ComputerScienceBA')
 
+test_transcript.reccommend(degree_catalog)       
+
+#print(test_transcript.audit_transcript(degree_catalog.get_degree('Manangement Information System Major')))
+
+#print(res)
 class HelloWorld(Resource):
     """
         Test REST Endpoint
@@ -33,20 +41,29 @@ class HelloWorld(Resource):
     def get(self):
         return {'hello': 'world'}
 
-class CatalogResource(Resource):
+class CourseCatalogResource(Resource):
     """
-        This API resource provides catalog data to the user
+        This API resource provides course catalog data to the user
     """
     def get(self):
         return course_catalog.to_JSON()
 
+class DegreeCatalogResource(Resource):
+    """
+        This API resource provides degree catalog data to the user     
+    """
+    def get(self):
+        return degree_catalog.to_JSON()
 class TranscriptResource(Resource):
     """
         This API endpoint handles the transcript being sent to and from the frontend
     """
+
     def post(self):
+        """
+            This method handles a post request to audit a transcript
+        """
         args = parser.parse_args()
-        print(args['transcript'])
 
         data = ast.literal_eval(args['transcript'])
 
@@ -54,16 +71,22 @@ class TranscriptResource(Resource):
 
         degree = degree_catalog.get_degree(data['major'])
 
-        print(degree)
-        result = transcript.audit_transcript(degree)
+        result = {}
 
-        print(result)
+        audit = transcript.audit_transcript(degree)
+
+        result['audit'] = audit
+
+        reccommendations = transcript.reccommend(degree_catalog)
+
+        result['reccommendations'] = reccommendations
 
         return result, 201
 
 
 api.add_resource(HelloWorld, '/')
-api.add_resource(CatalogResource, '/catalog')
+api.add_resource(CourseCatalogResource, '/coursecatalog')
+api.add_resource(DegreeCatalogResource, '/degreecatalog')
 api.add_resource(TranscriptResource,'/transcript')
 
 if __name__ == '__main__':

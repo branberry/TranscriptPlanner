@@ -60,10 +60,12 @@ class DegreeCatalog:
             
             for d in data:
                 degree = Degree(d,data[d])
-                print(data[d])
                 self.degrees.append(degree)
 
     def get_degree(self, degree_name):
         index = next((index for (index, d) in enumerate(self.degrees) if d.major == degree_name), None)
         return self.degrees[index]
+        
+    def to_JSON(self):
+        return json.dumps(self, default=lambda o : o.__dict__, sort_keys=True, indent=4)
 
