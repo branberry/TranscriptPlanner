@@ -44,9 +44,19 @@ or
 if on Mac/Linux.
 
 ### User Manual
-![alt text](dashboard.png "choosefile")
+All of the pages that can be viewed are displayed on the left navigation bar.  For the sake of this project, there are currently three pages that contain the information needed to carry out the tasks for project.  The pages are the Dashboard, Audit Transcript, and Transcript Request pages.
+
+
+
+The first page simply displays the courses avaiable to choose from as seen here:
+
+![alt text](dashboard.png "dashboard")
+
+The audit transcript page allows a user to enter in a JSON-formatted transcript that will be audited as soon as the file is selected by the user.  A sample JSON-formatted transcript is available in the ```transcriptPlanner/``` directory, and can be used to test this page. *Please note:  the behavior of the page is somewhat buggy; if you upload a file, it will only audit that file once, and you cannot choose another.  If you want to audit the file again, or audit a new file, you will need to refresh the page*. 
+![alt text](fileupload.png "fileupload")
+
+This page allows users to select courses from a dropdown list, select a major, and then choose to audit their courses.  *Please note:  if you do not enter a major, and run the audit, nothing will appear!*
 ![alt text](choosefile.png "choosefile")
-![alt text](fileupload.png "choosefile")
 
 ### Helpful resources
 
