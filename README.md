@@ -43,6 +43,10 @@ or
 
 if on Mac/Linux.
 
+### User Manual
+
+![alt text](choosefile.png "Title")
+
 ### Helpful resources
 
 For help on VueJS itself, you can [go here.](https://vuejs.org/v2/guide/)  It would also be helpful to know about [Axios](https://medium.com/codingthesmartway-com-blog/getting-started-with-axios-166cb0035237), and check out stuff on REST APIs to get a sense of what is going on.
