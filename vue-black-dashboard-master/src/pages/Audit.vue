@@ -2,22 +2,27 @@
   <div>
     <div id="app">
       <h1>Audit Your Transcript</h1>
+      <br />
+      <!-- Upload! -->
+      <form enctype="multipart/form-data">
+        <h4>Upload your transcipt here</h4>
+        <label class="text-reader">
+          <input type="file" @change="loadTextFromFile" />
+        </label>
+      </form>
 
-      <div class="container">
-        <!-- Upload! -->
-        <form enctype="multipart/form-data">
-          <h4>Upload your transcipt here</h4>
-          <label class="text-reader">
-            <input type="file" @change="loadTextFromFile" />
-          </label>
-        </form>
-      </div>
       <br /><br /><br />
       <div>
         <h1>Audit Results</h1>
 
         <h4>Major: {{ this.transcript.major }}</h4>
         <br /><br />
+        <div v-if="this.reccommendations.length > 0">
+          <h4>Reccommended Degrees Based on Your Progress: </h4>
+          <ul > 
+            <li v-for="reccommendation in reccommendations" v-bind:key="reccommendation.major">{{reccommendation.major}}</li>
+          </ul>
+        </div>
         <base-table :data="auditedTranscript">
           <template slot="columns">
             <th>Requirement</th>
@@ -73,6 +78,7 @@ export default {
     return {
       transcript: {},
       auditedTranscript: [],
+      reccommendations: [],
       auditInformation: {
         columns: ["requirement"]
       }
@@ -94,8 +100,6 @@ export default {
 
       reader.onload = event => {
         this.transcript = JSON.parse(reader.result).transcript;
-        console.log("transcript uploaded.");
-        console.log(this.transcript);
         this.upload(JSON.parse(reader.result));
       };
     },
@@ -114,9 +118,18 @@ export default {
             return res.data;
           })
           .then(res => {
-            this.auditedTranscript = res;
+            this.auditedTranscript = res.audit;
 
-            console.log(this.auditedTranscript);
+            /**
+             * Converting each JSON string representation of a degree into a degree object
+             */
+            for (let i = 0; i < res.reccommendations.length; i++) {
+              console.log(this.reccommendations.indexOf(JSON.parse(res.reccommendations[i]))  === -1)
+              // checking if the reccommendation already exists!
+              if(this.reccommendations.indexOf(JSON.parse(res.reccommendations[i])) === -1) {
+                this.reccommendations.push(JSON.parse(res.reccommendations[i]));
+              }
+            }
           })
       );
     }

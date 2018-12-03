@@ -38,6 +38,12 @@
           <div class="text-muted text-center mb-3">
             <small>Transcript Audit Results</small>
           </div>
+          <div v-if="this.reccommendations.length > 0">
+            <h4>Reccommended Degrees Based on Your Progress: </h4>
+          <ul > 
+            <li v-for="reccommendation in reccommendations" v-bind:key="reccommendation.major">{{reccommendation.major}}</li>
+            </ul>
+          </div>
           <h4 v-if="this.selectedDegreeName !== ''">
             Major: {{ this.selectedDegreeName }}
           </h4>
@@ -155,6 +161,7 @@ export default {
         auditModal: false
       },
       auditedTranscript: [],
+      reccommendations: [],
       columns: [
         "id",
         "name",
@@ -174,7 +181,7 @@ export default {
      */
     addCourse(course) {
       // checking if the object already exists in the array
-      if (this.user.courses.indexOf(course) === -1) {
+      if (this.displayedCourses.indexOf(course) === -1) {
         this.displayedCourses.push(course);
         this.user.courses.push(course.courseNum);
       }
@@ -234,8 +241,15 @@ export default {
             return res.data;
           })
           .then(res => {
-            this.auditedTranscript = res;
-
+            this.auditedTranscript = res.audit;
+            this.reccommendations = [];
+           /**
+             * Converting each JSON string representation of a degree into a degree object
+             */            
+            for (let i = 0; i < res.reccommendations.length; i++) {
+                this.reccommendations.push(JSON.parse(res.reccommendations[i]));
+            }
+            console.log(res)
             console.log(this.auditedTranscript);
           })
       );
