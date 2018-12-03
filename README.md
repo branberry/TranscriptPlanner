@@ -44,8 +44,9 @@ or
 if on Mac/Linux.
 
 ### User Manual
-
-![alt text](choosefile.png "Title")
+![alt text](dashboard.png "choosefile")
+![alt text](choosefile.png "choosefile")
+![alt text](fileupload.png "choosefile")
 
 ### Helpful resources
 
