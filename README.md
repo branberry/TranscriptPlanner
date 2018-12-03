@@ -25,7 +25,7 @@ Documentation on Flask-RESTful can be [found here.](https://flask-restful.readth
 
 For flask you will need [NodeJS](https://nodejs.org/en/) and  the [Yarn Package Manager](https://yarnpkg.com/en/).
 
-After these have been installed, CD into the vue-black-dashboard-master directory and run the following command to install the dependencies:
+After these have been installed, CD into the ```transcriptPlanner/vue-black-dashboard-master``` directory and run the following command to install the dependencies:
 
 ```yarn```
 
@@ -33,7 +33,7 @@ If you are on Mac/Linux you might need to run ```sudo``` with the previous comma
 
 ```sudo yarn```
 
-After this has completed, you can type the following command within the vue-black-dashboard-master directory to spin up a front-end web server:
+After this has completed, you can type the following command within the ```transcriptPlanner/vue-black-dashboard-master``` directory to spin up a front-end web server:
 
 ```yarn run dev```
 
